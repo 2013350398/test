@@ -1,9 +1,9 @@
 package main.DAO;
 
 import main.pojo.Student;
-
 import java.util.List;
 
+//学生
 public interface StudentDao {
     void addStudent(Student student);
     void updateStudent(Student student);

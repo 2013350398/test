@@ -1,5 +1,5 @@
 package main.pojo;
-
+//学生
 public class Student {
     String st_id;
     String st_name;

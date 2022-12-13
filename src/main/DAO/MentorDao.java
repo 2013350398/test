@@ -1,9 +1,9 @@
 package main.DAO;
 
 import main.pojo.Mentor;
-
 import java.util.List;
 
+//导师
 public interface MentorDao {
     void addMentor(Mentor mentor);
     void updateMentor(Mentor mentor);

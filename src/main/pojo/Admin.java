@@ -1,5 +1,5 @@
 package main.pojo;
-
+//研究生培养管理员
 public class Admin {
     String ad_id;
     String ad_name;

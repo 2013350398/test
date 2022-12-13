@@ -1,8 +1,8 @@
 package main.DAO;
 
 import main.pojo.Admin;
-
 import java.util.List;
+
 //研究生培养管理员
 public interface AdminDao {
     void addAdmin(Admin admin);

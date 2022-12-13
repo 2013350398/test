@@ -2,7 +2,6 @@ package main.DAO.Impl;
 
 import main.DAO.MentorDao;
 import main.pojo.Mentor;
-
 import java.util.List;
 
 public class MentorDaoImpl implements MentorDao {

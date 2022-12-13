@@ -2,9 +2,9 @@ package main.DAO.Impl;
 
 import main.DAO.StudentDao;
 import main.pojo.Student;
-
 import java.util.List;
 
+//学生
 public class StudentDaoImpl implements StudentDao {
     @Override
     public void addStudent(Student student) {

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
+//研究生培养管理员
 public class AdminDaoImpl implements AdminDao {
 
     @Override
