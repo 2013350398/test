@@ -42,17 +42,17 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public void deleteAdmin(String admin_no) {
+    public void deleteAdmin(String ad_id) {
 
     }
 
     @Override
-    public Admin getAdmin(String admin_no) {
+    public Admin getAdmin(String ad_id) {
         return null;
     }
 
     @Override
-    public List<Admin> findAdmins(Admin s) {
+    public List<Admin> findAdmins(Admin admin) {
         return null;
     }
 }

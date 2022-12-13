@@ -9,6 +9,6 @@ public class test {
         admin.setAd_name("张三");
         admin.setAd_pwd("1");
         DAOFactory.getInstance().getAdminDAO().addAdmin(admin);
-//        System.out.println("insert:"+admin.toString()+"\n");
+        System.out.println("insert:"+admin.toString()+"\n");
     }
 }

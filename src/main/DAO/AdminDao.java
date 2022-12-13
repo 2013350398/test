@@ -3,11 +3,11 @@ package main.DAO;
 import main.pojo.Admin;
 
 import java.util.List;
-
+//研究生培养管理员
 public interface AdminDao {
     void addAdmin(Admin admin);
     void updateAdmin(Admin admin);
-    void deleteAdmin(String admin_no);
-    Admin getAdmin(String admin_no);
-    List<Admin> findAdmins(Admin s);
+    void deleteAdmin(String ad_id);
+    Admin getAdmin(String ad_id);
+    List<Admin> findAdmins(Admin admin);
 }
