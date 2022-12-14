@@ -1,9 +1,9 @@
 package main.DAO.Impl;
 
-import main.DAO.MentorDao;
+import main.DAO.SubjectDao;
 import main.Util.DBUtil;
 import main.Util.DruidUtil;
-import main.pojo.Mentor;
+import main.pojo.Subject;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -12,23 +12,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-//学生
-public class MentorDaoImpl implements MentorDao {
+public class SubjectDaoImpl implements SubjectDao {
     @Override
-    public void addMentor(Mentor mentor) {
-        String sql = "INSERT INTO mentor(me_id,me_name,me_pwd,me_sex,me_tel,me_email) VALUES(?,?,?,?,?,?) ";
+    public void addSubject(Subject subject) {
+        String sql = "INSERT INTO subject(su_id,su_name) VALUES(?,?) ";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1, mentor.getMe_id());
-            psmt.setString(2, mentor.getMe_name());
-            psmt.setString(3, mentor.getMe_pwd());
-            psmt.setString(4, mentor.getMe_sex());
-            psmt.setString(5, mentor.getMe_tel());
-            psmt.setString(6, mentor.getMe_email());
+            psmt.setString(1, subject.getSu_id());
+            psmt.setString(2, subject.getSu_name());
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -43,20 +38,16 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
-    public void updateMentor(Mentor mentor) {
-        String sql = "update mentor set me_name=?,me_pwd=?,me_sex=?,me_email=?,me_tel=? where me_id=? ";
+    public void updateSubject(Subject subject) {
+        String sql = "update subject set su_name=? where su_id=? ";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1, mentor.getMe_name());
-            psmt.setString(2, mentor.getMe_pwd());
-            psmt.setString(3, mentor.getMe_sex());
-            psmt.setString(4, mentor.getMe_email());
-            psmt.setString(5, mentor.getMe_tel());
-            psmt.setString(6, mentor.getMe_id());
+            psmt.setString(1, subject.getSu_name());
+            psmt.setString(2, subject.getSu_id());
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -71,15 +62,15 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
-    public void deleteMentor(String me_id) {
-        String sql = "delete from mentor where me_id=?";
+    public void deleteSubject(String su_id) {
+        String sql = "delete from subject where su_id=?";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1, me_id);
+            psmt.setString(1, su_id);
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -94,24 +85,20 @@ public class MentorDaoImpl implements MentorDao {
     }
 
     @Override
-    public Mentor getMentor(String me_id) {
-        String sql = "SELECT * FROM mentor WHERE me_id=?";
+    public Subject getSubject(String su_id) {
+        String sql = "SELECT * FROM subject WHERE su_id=?";
         Connection con = null;
-        Mentor mentor = new Mentor();
+        Subject subject = new Subject();
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1, me_id);
+            psmt.setString(1, su_id);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
-                mentor.setMe_id(rs.getString("me_id"));
-                mentor.setMe_name(rs.getString("me_name"));
-                mentor.setMe_pwd(rs.getString("me_pwd"));
-                mentor.setMe_sex(rs.getString("me_sex"));
-                mentor.setMe_tel(rs.getString("me_tel"));
-                mentor.setMe_email(rs.getString("me_email"));
+                subject.setSu_id(rs.getString("su_id"));
+                subject.setSu_name(rs.getString("su_name"));
             }
             psmt.close();
         }catch(Exception e){
@@ -123,24 +110,20 @@ public class MentorDaoImpl implements MentorDao {
                 e.printStackTrace();
             }
         }
-        return mentor;
+        return subject;
     }
 
     @Override
-    public List<Mentor> findMentors(Mentor mentor) {
-        String sql = "SELECT * FROM mentor where ";
+    public List<Subject> findSubjects(Subject subject) {
+        String sql = "SELECT * FROM subject where ";
         Connection con = null;
-        List<Mentor>st=new ArrayList<>();
+        List<Subject>ad=new ArrayList<>();
         //保存字符串
         StringBuilder suf = new StringBuilder(512);
         suf.append(sql);
         //模糊处理
-        if(mentor.getMe_id() != null){ suf.append("me_id LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_id())+ "%' AND "); }
-        if(mentor.getMe_name() != null){ suf.append("me_name LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_name())+ "%' AND "); }
-        if(mentor.getMe_pwd() != null){ suf.append("me_pwd LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_pwd())+ "%' AND "); }
-        if(mentor.getMe_sex() != null){ suf.append("me_sex LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_sex())+ "%' AND "); }
-        if(mentor.getMe_tel() != null){ suf.append("me_tel LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_tel())+ "%' AND "); }
-        if(mentor.getMe_email() != null){ suf.append("me_email LIKE '%"+ DBUtil.fixSqlFieldValue(mentor.getMe_email())+ "%' AND "); }
+        if(subject.getSu_id() != null){ suf.append("su_id LIKE '%"+ DBUtil.fixSqlFieldValue(subject.getSu_id())+ "%' AND "); }
+        if(subject.getSu_name() != null){ suf.append("su_name LIKE '%"+ DBUtil.fixSqlFieldValue(subject.getSu_name())+ "%' AND "); }
         //删除无用and where 前后空格也要删除
         if(suf.substring(suf.length()-5).equals(" AND ")){suf.delete(suf.length()-5,suf.length()-1);}
         if(suf.substring(suf.length()-7).equals(" WHERE ")){suf.delete(suf.length()-7,suf.length()-1);}
@@ -151,14 +134,10 @@ public class MentorDaoImpl implements MentorDao {
             PreparedStatement psmt = con.prepareStatement(suf.toString());//
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
-                Mentor admintemp = new Mentor();//每次都要new新的对象 list遍历不然会重复同一个
-                admintemp.setMe_id(rs.getString("me_id"));
-                admintemp.setMe_name(rs.getString("me_name"));
-                admintemp.setMe_pwd(rs.getString("me_pwd"));
-                admintemp.setMe_sex(rs.getString("me_sex"));
-                admintemp.setMe_tel(rs.getString("me_tel"));;
-                admintemp.setMe_email(rs.getString("me_email"));
-                st.add(admintemp);
+                Subject admintemp = new Subject();//每次都要new新的对象 list遍历不然会重复同一个
+                admintemp.setSu_id(rs.getString("su_id"));
+                admintemp.setSu_name(rs.getString("su_name"));
+                ad.add(admintemp);
             }
             psmt.close();
         }catch(Exception e){
@@ -170,6 +149,6 @@ public class MentorDaoImpl implements MentorDao {
                 e.printStackTrace();
             }
         }
-        return st;
+        return ad;
     }
 }

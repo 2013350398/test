@@ -1,6 +1,6 @@
 package main.DAO;
 
-import main.DAO.Impl.AdminDaoImpl;
+import main.DAO.Impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -15,8 +15,20 @@ public class DAOFactory {
     public AdminDao getAdminDAO(){
         return new AdminDaoImpl();
     }
-//    public ClassDao getClassDAO(){
-//        return new ClassDaoImpl();
-//    }
-//    public HomeworkDao getHomeworkDAO(){ return new HomeworkDaoImpl(); }
+    public GraduateDao getGraduateDAO(){
+        return new GraduateDaoImpl();
+    }
+    public MentorDao getMentorDAO(){
+        return new MentorDaoImpl();
+    }
+    public Project_indentifyDao getProject_indentifyDAO(){
+        return new Project_indentifyDaoImpl();
+    }
+    public Project_leaderDao getProject_leaderDAO(){ return new Project_leaderDaoImpl(); }
+    public StudentDao getStudentDAO(){
+        return new StudentDaoImpl();
+    }
+    public SubjectDao getSubjectDAO(){
+        return new SubjectDaoImpl();
+    }
 }
