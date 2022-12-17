@@ -21,6 +21,9 @@ public class DAOFactory {
     public MentorDao getMentorDAO(){
         return new MentorDaoImpl();
     }
+    public ProjectDao getProjectDAO(){
+        return new ProjectDaoImpl();
+    }
     public Project_indentifyDao getProject_indentifyDAO(){
         return new Project_indentifyDaoImpl();
     }

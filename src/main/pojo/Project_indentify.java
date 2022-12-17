@@ -2,8 +2,8 @@ package main.pojo;
 
 public class Project_indentify {
     String pi_id;
-    String pi_name;
-    String pi_type;
+    String pr_id;
+    String st_id;
     String pi_time;
     String pi_work;
     String pi_funding;
@@ -14,8 +14,8 @@ public class Project_indentify {
     public String toString() {
         return "Project_indentify{" +
                 "pi_id='" + pi_id + '\'' +
-                ", pi_name='" + pi_name + '\'' +
-                ", pi_type='" + pi_type + '\'' +
+                ", pr_id='" + pr_id + '\'' +
+                ", st_id='" + st_id + '\'' +
                 ", pi_time='" + pi_time + '\'' +
                 ", pi_work='" + pi_work + '\'' +
                 ", pi_funding='" + pi_funding + '\'' +
@@ -32,20 +32,20 @@ public class Project_indentify {
         this.pi_id = pi_id;
     }
 
-    public String getPi_name() {
-        return pi_name;
+    public String getPr_id() {
+        return pr_id;
     }
 
-    public void setPi_name(String pi_name) {
-        this.pi_name = pi_name;
+    public void setPr_id(String pr_id) {
+        this.pr_id = pr_id;
     }
 
-    public String getPi_type() {
-        return pi_type;
+    public String getSt_id() {
+        return st_id;
     }
 
-    public void setPi_type(String pi_type) {
-        this.pi_type = pi_type;
+    public void setSt_id(String st_id) {
+        this.st_id = st_id;
     }
 
     public String getPi_time() {

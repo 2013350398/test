@@ -96,7 +96,7 @@ public class GraduateDaoImpl implements GraduateDao {
 
     @Override
     public Graduate getGraduate(String gr_id) {
-        String sql = "SELECT * FROM graduate WHERE st_id=?";
+        String sql = "SELECT * FROM graduate WHERE gr_id=?";
         Connection con = null;
         Graduate graduate = new Graduate();
         try{
@@ -105,6 +105,40 @@ public class GraduateDaoImpl implements GraduateDao {
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
             psmt.setString(1, gr_id);
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()){
+                graduate.setGr_id(rs.getString("gr_id"));
+                graduate.setSt_id(rs.getString("st_id"));
+                graduate.setAs_num(rs.getInt("as_num"));
+                graduate.setAca_num(rs.getInt("aca_num"));
+                graduate.setPi_num(rs.getInt("pi_num"));
+                graduate.setAch_num(rs.getInt("ach_num"));
+                graduate.setGr_state(rs.getString("gr_state"));
+            }
+            psmt.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return graduate;
+    }
+
+    @Override
+    public Graduate getGraduateBySt_id(String st_id) {
+        String sql = "SELECT * FROM graduate WHERE st_id=?";
+        Connection con = null;
+        Graduate graduate = new Graduate();
+        try{
+            DruidUtil druidUtil=null;
+            DataSource dataSource=druidUtil.getDataSource();
+            con=dataSource.getConnection();//获取连接池;
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setString(1, st_id);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
                 graduate.setGr_id(rs.getString("gr_id"));
@@ -165,6 +199,41 @@ public class GraduateDaoImpl implements GraduateDao {
                 graduatetemp.setAch_num(rs.getInt("ach_num"));
                 graduatetemp.setGr_state(rs.getString("gr_state"));
                 gr.add(graduatetemp);
+            }
+            psmt.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return gr;
+    }
+
+    @Override
+    public List<Graduate> getAllGraduates() {
+        String sql = "SELECT * FROM graduate";
+        Connection con = null;
+        List<Graduate>gr=new ArrayList<>();
+        try{
+            DruidUtil druidUtil=null;
+            DataSource dataSource=druidUtil.getDataSource();
+            con=dataSource.getConnection();//获取连接池;
+            PreparedStatement psmt = con.prepareStatement(sql);
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()){
+                Graduate graduate = new Graduate();
+                graduate.setGr_id(rs.getString("gr_id"));
+                graduate.setSt_id(rs.getString("st_id"));
+                graduate.setAs_num(rs.getInt("as_num"));
+                graduate.setAca_num(rs.getInt("aca_num"));
+                graduate.setPi_num(rs.getInt("pi_num"));
+                graduate.setAch_num(rs.getInt("ach_num"));
+                graduate.setGr_state(rs.getString("gr_state"));
+                gr.add(graduate);
             }
             psmt.close();
         }catch(Exception e){
