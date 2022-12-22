@@ -1,0 +1,60 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"FrameworkDetectionExcludesConfiguration\">\r\n    <file type=\"web\" url=\"file://$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"18\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -11,7 +11,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" project-jdk-name="18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/database.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>url=jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false\r\n#¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ\r\n#Unsupported major.minor version 52.0£ºÈ«»»³Éjdk18\r\n#PKIX path building failed£º¼ÓÉÏencrypt=false\r\n#ssl²»ÐÅÈÎ£ºTrust Server Certificate=True£¬¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ\r\n#druid°æ±¾\r\n#win10¿ØÖÆÌ¨µÄ±àÂëÄ¬ÈÏÊÇGBK£¬¶ø jvm µÄÊä³öÊÇUTF-8£ºÔËÐÐÉèÖÃVM£º-Dfile.encoding=GBK  &  all¸Ä³Éutf-8\r\nusername=sa\r\npassword=20021001\r\ndriverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver\r\ninitialSize=10\r\nmaxActive=10\r\nmaxWait=2000
+===================================================================
+diff --git a/src/database.properties b/src/database.properties
+--- a/src/database.properties	
++++ b/src/database.properties	
+@@ -1,4 +1,4 @@
+-url=jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false
++url=jdbc:sqlserver://localhost:1433;DatabaseName=keshe;user=sa;password=sa;Trust Server Certificate=True; encrypt=false
+ #¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ
+ #Unsupported major.minor version 52.0£ºÈ«»»³Éjdk18
+ #PKIX path building failed£º¼ÓÉÏencrypt=false
+@@ -6,7 +6,7 @@
+ #druid°æ±¾
+ #win10¿ØÖÆÌ¨µÄ±àÂëÄ¬ÈÏÊÇGBK£¬¶ø jvm µÄÊä³öÊÇUTF-8£ºÔËÐÐÉèÖÃVM£º-Dfile.encoding=GBK  &  all¸Ä³Éutf-8
+ username=sa
+-password=20021001
++password=sa
+ driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+ initialSize=10
+ maxActive=10
+Index: src/main/Util/ConnectionManagement.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.Util;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n//不用\r\npublic class ConnectionManagement {\r\n    public static Connection getConnection() {\r\n        Connection conn = null;\r\n        try {\r\n            String url = \"jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false\";\r\n            Class.forName(\"com.microsoft.sqlserver.jdbc.SQLServerDriver\");\r\n            conn = DriverManager.getConnection(url);\r\n        } catch (ClassNotFoundException e) {\r\n            System.out.println(\"无法找到驱动类\");\r\n        }\r\n        catch(SQLException sqlE) {\r\n            System.out.println(\"sqlerror\");\r\n            sqlE.printStackTrace();\r\n        }\r\n\r\n        return conn;\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/Util/ConnectionManagement.java b/src/main/Util/ConnectionManagement.java
+--- a/src/main/Util/ConnectionManagement.java	
++++ b/src/main/Util/ConnectionManagement.java	
+@@ -8,7 +8,7 @@
+     public static Connection getConnection() {
+         Connection conn = null;
+         try {
+-            String url = "jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false";
++            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=keshe;user=sa;password=sa;Trust Server Certificate=True;encrypt=false";
+             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+             conn = DriverManager.getConnection(url);
+         } catch (ClassNotFoundException e) {
