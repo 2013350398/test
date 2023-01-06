@@ -8,7 +8,7 @@ public class ConnectionManagement {
     public static Connection getConnection() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false";
+            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=keshe;user=sa;password=12345";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url);
         } catch (ClassNotFoundException e) {

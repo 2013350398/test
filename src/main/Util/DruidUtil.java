@@ -1,6 +1,7 @@
 package main.Util;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.sun.xml.internal.ws.encoding.xml.XMLMessage;
 
 import javax.sql.DataSource;
 import java.io.InputStream;
@@ -9,6 +10,7 @@ import java.util.Properties;
 public class DruidUtil {
     //声明dataSource
     private static DataSource dataSource;
+
     //通过静态代码块
     static {
         try {
@@ -27,4 +29,5 @@ public class DruidUtil {
     public static DataSource getDataSource(){
         return dataSource;//返回dataSource
     }
+
 }

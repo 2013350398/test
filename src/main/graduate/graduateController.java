@@ -8,12 +8,13 @@ import java.util.Scanner;
 
 public class graduateController {
     //增加学生毕业审核表
-    public void addGraduate(){
+    public void addGraduate(String num){
         Graduate graduate=new Graduate();
-        System.out.println("请输入：学生编号");
-        Scanner sc=new Scanner(System.in);
-        graduate.setSt_id(sc.next());
-        graduate.setGr_id(graduate.getSt_id());//默认毕业审核表编号与学生编号一致
+//        System.out.println("请输入：学生编号");
+//        Scanner sc=new Scanner(System.in);
+//        graduate.setSt_id(sc.next());
+        graduate.setSt_id(num);
+        graduate.setGr_id(num);//默认毕业审核表编号与学生编号一致
         graduate.setPi_num(0);
         graduate.setAs_num(0);
         graduate.setAca_num(0);
@@ -44,7 +45,15 @@ public class graduateController {
             if(graduate.getGr_state().equals("不满足")){
                 graduate.setGr_state("满足");
                 DAOFactory.getInstance().getGraduateDAO().updateGraduate(graduate);
-                System.out.println("通过该学生毕业审核！");
+                System.out.println("是否通过该学生毕业审核(Y/N)");
+                Scanner sc=new Scanner(System.in);
+                String t=sc.nextLine();
+                if(t.equals("Y")){
+                    System.out.println("通过该学生毕业审核！");
+                }
+                else if(t.equals("N")){
+                    System.out.println("暂不通过该学生毕业审核！");
+                }
             }
             else{
                 System.out.println("已通过该学生毕业审核！");

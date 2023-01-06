@@ -34,4 +34,17 @@ public class DAOFactory {
     public SubjectDao getSubjectDAO(){
         return new SubjectDaoImpl();
     }
+    public CourseDao getCourseDAO(){
+        return new CourseDaoImpl();
+    }
+    public TeacherDao getTeacherDao(){
+        return new TeacherDaoImpl();
+    }
+
+    public ApplicationDao getApplicationDao(){
+        return new ApplicationDaoImpl();
+    }
+    public EvaluateDao getEvaluateDao(){
+        return new EvaluateDaoImpl();
+    }
 }
