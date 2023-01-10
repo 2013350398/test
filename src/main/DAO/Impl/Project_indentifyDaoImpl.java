@@ -16,7 +16,7 @@ import java.util.List;
 public class Project_indentifyDaoImpl implements Project_indentifyDao {
     @Override
     public void addProject_indentify(Project_indentify project_indentify) {
-        String sql = "INSERT INTO project_identify(pi_id,pr_id,st_id,pi_time,pi_funding,pi_work,pi_plstate,pi_mestate) VALUES(?,?,?,?,?,?,?,?) ";
+        String sql = "INSERT INTO project_indentify(pi_id,pr_id,st_id,pi_time,pi_funding,pi_work,pi_plstate,pi_mestate) VALUES(?,?,?,?,?,?,?,?) ";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
@@ -46,7 +46,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public void updateProject_indentify(Project_indentify project_indentify) {
-        String sql = "update project_identify set pr_id=?,st_id=?,pi_time=?,pi_work=?,pi_funding=?,pi_plstate=?,pi_mestate=? where pi_id=? ";
+        String sql = "update project_indentify set pr_id=?,st_id=?,pi_time=?,pi_work=?,pi_funding=?,pi_plstate=?,pi_mestate=? where pi_id=? ";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
@@ -76,7 +76,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public void deleteProject_indentify(String pi_id) {
-        String sql = "delete from project_identify where pi_id=?";
+        String sql = "delete from project_indentify where pi_id=?";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
@@ -99,7 +99,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public Project_indentify getProject_indentify(String pi_id) {
-        String sql = "SELECT * FROM project_identify WHERE pi_id=?";
+        String sql = "SELECT * FROM project_indentify WHERE pi_id=?";
         Connection con = null;
         Project_indentify project_indentify = new Project_indentify();
         try{
@@ -134,7 +134,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public List<Project_indentify> findProject_indentifys(Project_indentify project_indentify) {
-        String sql = "SELECT * FROM project_identify where ";
+        String sql = "SELECT * FROM project_indentify where ";
         Connection con = null;
         List<Project_indentify>pi=new ArrayList<>();
         //保存字符串
@@ -185,7 +185,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public List<Project_indentify> findProject_indentifysBYMe_id(String me_id) {
-        String sql = "SELECT * FROM project_identify WHERE me_id=?";
+        String sql = "SELECT * FROM project_indentify WHERE me_id=?";
         Connection con = null;
         List<Project_indentify>project_indentifyList=new ArrayList<>();
         try{
@@ -222,7 +222,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public List<Project_indentify> findProject_indentifysBYPr_id(String pr_id) {
-        String sql = "SELECT * FROM project_identify WHERE pr_id=?";
+        String sql = "SELECT * FROM project_indentify WHERE pr_id=?";
         Connection con = null;
         List<Project_indentify>project_indentifyList=new ArrayList<>();
         try{
@@ -259,7 +259,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public List<Project_indentify> findProject_indentifysBYSt_id(String st_id) {
-        String sql = "SELECT * FROM project_identify WHERE st_id=?";
+        String sql = "SELECT * FROM project_indentify WHERE st_id=?";
         Connection con = null;
         List<Project_indentify>project_indentifyList=new ArrayList<>();
         try{
@@ -296,7 +296,7 @@ public class Project_indentifyDaoImpl implements Project_indentifyDao {
 
     @Override
     public List<Project_indentify> getAllProjectProject_indentifys() {
-        String sql = "SELECT * FROM project_identify";
+        String sql = "SELECT * FROM project_indentify";
         Connection con = null;
         List<Project_indentify>project_indentifyList=new ArrayList<>();
         try{

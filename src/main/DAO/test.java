@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class test {
     private static Scanner sc=new Scanner(System.in);
-    private static int cnt=sc.nextInt();
+    private static int cnt;
     private static graduateController con=new graduateController();
     private static project_identifyController pic=new project_identifyController();
     private static projectController pc=new projectController();
@@ -21,12 +21,14 @@ public class test {
         while(true){
             System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.退出");
             cnt=sc.nextInt();
+            sc.nextLine();
             int t;
             switch (cnt){
                 case 1:
                     while(true){
                         System.out.println("请选择：\n1.显示所有学生毕业信息\n2.学生毕业审核\n3.退出");
                         t=sc.nextInt();
+                        sc.nextLine();
                         if(t==1){
                             //查看所有
                             con.admingetall();
@@ -45,6 +47,7 @@ public class test {
                     while(true){
                         System.out.println("请选择：\n1.查询项目认证表\n2.查询项目表\n3.更新项目认定次数\n4.退出");
                         t=sc.nextInt();
+                        sc.nextLine();
                         if(t==1){
                             //查询项目认证表
                             pic.adget();
@@ -97,12 +100,14 @@ public class test {
             System.out.println("请选择功能：\n1.研究生项目认定审核\n2.研究生成果认定审核\n3.研究生学术交流审核\n4.退出");
             int t;
             cnt=sc.nextInt();
+            sc.nextLine();
             switch (cnt){
                 case 1:
                     //项目认定
                     while(true){
                         System.out.println("请选择功能：\n1.查询自己下属的各个项目信息\n2.导师查询自己下属的各个项目信息的相关学生认证表信息\n3.修改项目认证表签字状态\n4.退出");
                         t=sc.nextInt();
+                        sc.nextLine();
                         switch (t){
                             case 1:
                                 //查询自己下属的各个项目信息
@@ -148,11 +153,13 @@ public class test {
             System.out.println("请选择功能：\n1.研究生项目认定申请\n2.研究生成果认定申请\n3.研究生学术交流申请\n4.助教申请\n5.退出");
             int t;
             cnt=sc.nextInt();
+            sc.nextLine();
             switch (cnt){
                 case 1:
                     while(true){
                         System.out.println("请选择功能：\n1.查询所有项目信息\n2.新建参与项目的认定信息\n3.查询自己申请的认证项目信息\n4.退出");
                         t=sc.nextInt();
+                        sc.nextLine();
                         if(t==1){//查询所有项目信息
                             pc.stget();
                         }
@@ -190,6 +197,7 @@ public class test {
         while(true){
             System.out.println("请选择功能：\n1.新建项目\n2.查询自己管理的各个项目信息\n3.查询自己管理的各个项目信息的相关学生认证表信息\n4.修改项目认证表签字状态\n5.退出");
             cnt=sc.nextInt();
+            sc.nextLine();
             switch (cnt){
                 case 1:
                     //新建项目
@@ -221,58 +229,82 @@ public class test {
     public static void login(){
         System.out.println("请选择登录身份：\n1.研究生管理员\n2.导师\n3.学生\n4.项目负责人\n5.学科负责人\n6.教师\n");
         cnt=sc.nextInt();
+        sc.nextLine();
         System.out.println("请输入用户名和密码：");
         String name=sc.nextLine();
         String pwd=sc.nextLine();
-        switch (cnt){
-            case 1:
-                AdminDaoImpl admin=new AdminDaoImpl();
-                Admin ad=new Admin();
-                ad.setAd_name(name);
-                ad.setAd_pwd(pwd);
-                List<Admin>admins=admin.findAdmins(ad);
-                if(admins.size()!=0){ AdminFunc(admins.get(0)); }
-                else{ System.out.println("不存在该研究生管理员或密码错误！"); }
-                break;
-            case 2:
-                MentorDaoImpl mentor=new MentorDaoImpl();
-                Mentor me=new Mentor();
-                me.setMe_name(name);
-                me.setMe_pwd(pwd);
-                List<Mentor>mentors=mentor.findMentors(me);
-                if(mentors.size()!=0){ MentorFunc(mentors.get(0)); }
-                else{ System.out.println("不存在该导师或密码错误！"); }
+        int flag=0;
+        while(true){
+            switch (cnt){
+                case 1:
+                    AdminDaoImpl admin=new AdminDaoImpl();
+                    Admin ad=new Admin();
+                    ad.setAd_name(name);
+                    ad.setAd_pwd(pwd);
+//                    System.out.println("name:"+name+" pwd:"+pwd);
+                    List<Admin>admins=admin.findAdmins(ad);
+                    if(admins.size()!=0){ AdminFunc(admins.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该研究生管理员或密码错误！");
+                    }
+                    break;
+                case 2:
+                    MentorDaoImpl mentor=new MentorDaoImpl();
+                    Mentor me=new Mentor();
+                    me.setMe_name(name);
+                    me.setMe_pwd(pwd);
+                    List<Mentor>mentors=mentor.findMentors(me);
+                    if(mentors.size()!=0){ MentorFunc(mentors.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该导师或密码错误！"); }
 
-                break;
-            case 3:
-                StudentDaoImpl student=new StudentDaoImpl();
-                Student st=new Student();
-                st.setSt_name(name);
-                st.setSt_pwd(pwd);
-                List<Student>students=student.findStudents(st);
-                if(students.size()>0){ StudentFunc(students.get(0)); }
-                else{ System.out.println("不存在该学生或密码错误！"); }
-                break;
-            case 4:
-                Project_leaderDaoImpl prol=new Project_leaderDaoImpl();
-                Project_leader pl=new Project_leader();
-                pl.setPl_name(name);
-                pl.setPl_pwd(pwd);
-                List<Project_leader>project_leaders=prol.findProject_leaders(pl);
-                if(project_leaders.size()>0){ Project_leaderFunc(project_leaders.get(0)); }
-                else{ System.out.println("不存在该项目管理员或密码错误！"); }
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
+                    break;
+                case 3:
+                    StudentDaoImpl student=new StudentDaoImpl();
+                    Student st=new Student();
+                    st.setSt_name(name);
+                    st.setSt_pwd(pwd);
+                    List<Student>students=student.findStudents(st);
+                    if(students.size()>0){ StudentFunc(students.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该学生或密码错误！");
+                    }
+                    break;
+                case 4:
+                    Project_leaderDaoImpl prol=new Project_leaderDaoImpl();
+                    Project_leader pl=new Project_leader();
+                    pl.setPl_name(name);
+                    pl.setPl_pwd(pwd);
+                    List<Project_leader>project_leaders=prol.findProject_leaders(pl);
+                    if(project_leaders.size()>0){ Project_leaderFunc(project_leaders.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该项目管理员或密码错误！");
+                    }
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                default:
+                    break;
+            }
+            if(flag==0){ break; }
+            else if(flag==1){
+                System.out.println("请输入用户名和密码：");
+                name=sc.nextLine();
+                pwd=sc.nextLine();
+                flag=0;
+            }
         }
     }
     public static void main(String[] args) {
         login();
-        graduateController graduateController=new graduateController();
+//        System.out.println("in");
+//        graduateController graduateController=new graduateController();
 //        //新建毕业审核表
 //        graduateController.addGraduate();
 //        //查看所有毕业审核表信息
@@ -280,7 +312,7 @@ public class test {
 //        //审核毕业
 //        graduateController.trail("001");
 
-        project_identifyController project_identifyController=new project_identifyController();
+//        project_identifyController project_identifyController=new project_identifyController();
 //        //更新学生毕业审核表项目认定次数
 //        project_identifyController.updatepi_num();
 //        //学生新建认定的参与项目信息
@@ -297,7 +329,7 @@ public class test {
 //        //研究生培养管理员查询所有项目认证表
 //        project_identifyController.adget();
 
-        projectController projectController=new projectController();
+//        projectController projectController=new projectController();
         //新建
 //        projectController.addProject("001");//002 基于图像分析进行水质研究 国家级项目 002
 //        //查找
