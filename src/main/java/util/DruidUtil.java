@@ -1,0 +1,71 @@
+package util;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+import javax.sql.DataSource;
+import java.io.File;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class DruidUtil {
+    //声明dataSource
+    private static DataSource dataSource;
+    //通过静态代码块
+    static {
+        try {
+            //1. 创建Properties对象
+            Properties properties = new Properties();
+            //2. 将配置文件转换成字节输入流
+            InputStream is = DruidUtil.class.getClassLoader().getResourceAsStream("database.properties");
+//            InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("src/database.properties");
+            //3. 使用properties对象加载is
+            properties.load(is);
+            //druid底层是使用的工厂设计模式，去加载配置文件，创建DruidDataSource对象
+            dataSource = DruidDataSourceFactory.createDataSource(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static DataSource getDataSource(){
+        return dataSource;//返回dataSource
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
+
+    public static void closeResultSet(ResultSet resultSet) {
+        if (resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void closePrepareStatement(PreparedStatement pst) {
+        if(pst != null) {
+            try {
+                pst.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public static void closeConnection(Connection conn) {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
