@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="database_keshe" />
         <module name="databasekeshe" />
+        <module name="database_keshe-master" />
       </profile>
     </annotationProcessing>
   </component>
