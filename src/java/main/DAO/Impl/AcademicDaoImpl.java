@@ -129,4 +129,32 @@ public class AcademicDaoImpl implements AcademicDao {
             }
         }
     }
+
+    @Override
+    public int countByCharge(String st_id) {
+        String Academic_SELECT_SQL = "select * from academic where st_id=#{st_id}";
+        Connection con = null;
+        int count=0;
+        try{
+            DruidUtil druidUtil=null;
+            DataSource dataSource=druidUtil.getDataSource();
+            con=dataSource.getConnection();//获取连接池;
+            PreparedStatement psmt = con.prepareStatement(Academic_SELECT_SQL);
+            ResultSet rs=psmt.executeQuery();
+            while(rs.next()){
+                count++;
+            }
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return count;
+    }
 }
