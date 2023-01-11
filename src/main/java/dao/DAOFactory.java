@@ -21,6 +21,9 @@ public class DAOFactory {
     public MentorDAO getMentorDAO() {return new MentorDAOImpl();}
     public AdminDAO getAdminDAO() {return new AdminDAOImpl();}
 
+    public Me_StDAO getMe_StDAO() {
+        return new Me_StDAOImpl();
+    }
 
     public VerifyDAO getVerifyDAO() {
         return new VerifyDAOImpl();
