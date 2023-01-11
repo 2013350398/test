@@ -44,7 +44,9 @@ public class test {
                     String st_id = input.next();
                     System.out.println("签字（通过或不通过）：");
                     String sign = input.next();
-                    DAOFactory.getInstance().getAcademicDao().updateByMentor(st_id, sign);
+                    System.out.println("学术交流会议id：");
+                    int i=input.nextInt();
+                    DAOFactory.getInstance().getAcademicDao().updateByMentor(st_id, sign,i);
                 }
             } else if (str.equals("3")) {           //学科负责人
                 System.out.println("1.显示学生学术交流情况表\n2.审核签字\n3.查看某位学生学术交流次数");
@@ -56,7 +58,9 @@ public class test {
                     String st_id = input.next();
                     System.out.println("签字（通过或不通过）：");
                     String sign = input.next();
-                    DAOFactory.getInstance().getAcademicDao().updateByCharge(st_id, sign);
+                    System.out.println("学术交流会议id：");
+                    int i=input.nextInt();
+                    DAOFactory.getInstance().getAcademicDao().updateByCharge(st_id, sign,i);
                 }else if (s1.equals("3")){
                     System.out.println("请输学生学号：");
                     String st_id = input.next();

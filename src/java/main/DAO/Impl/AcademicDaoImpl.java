@@ -13,8 +13,8 @@ import java.util.List;
 
 public class AcademicDaoImpl implements AcademicDao {
     @Override
-    public void updateByCharge(String st_id,String sign) {
-        String Academic_UPDATE_SQL = "update academic set chargeSign=? where st_id=? ";
+    public void updateByCharge(String st_id,String sign,int ac_id) {
+        String Academic_UPDATE_SQL = "update academic set chargeSign=? where st_id=? and ac_id=?";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
@@ -23,6 +23,7 @@ public class AcademicDaoImpl implements AcademicDao {
             PreparedStatement psmt = con.prepareStatement(Academic_UPDATE_SQL);
             psmt.setString(1, sign);
             psmt.setString(2, st_id);
+            psmt.setInt(3,ac_id);
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -37,8 +38,8 @@ public class AcademicDaoImpl implements AcademicDao {
     }
 
     @Override
-    public void updateByMentor(String st_id,String sign) {
-        String Academic_UPDATE_SQL = "update academic set mentorSign = ? where st_id=? ";
+    public void updateByMentor(String st_id,String sign,int ac_id) {
+        String Academic_UPDATE_SQL = "update academic set mentorSign = ? where st_id=? and ac_id=?";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
@@ -47,6 +48,7 @@ public class AcademicDaoImpl implements AcademicDao {
             PreparedStatement psmt = con.prepareStatement(Academic_UPDATE_SQL);
             psmt.setString(1, sign);
             psmt.setString(2, st_id);
+            psmt.setInt(3,ac_id);
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -98,23 +100,23 @@ public class AcademicDaoImpl implements AcademicDao {
 
     @Override
     public void insertByStudent(academic a) {
-        String Academic_INSERT_SQL = "insert into academic values (?,?,?,?,?,?,?,?,?,?)";
+        String Academic_INSERT_SQL = "insert into academic values (?,?,?,?,?,?,?,?,?)";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(Academic_INSERT_SQL);
-            psmt.setString(1, a.getAc_id());
-            psmt.setString(2, a.getAc_img());
-            psmt.setString(3, a.getAc_meetingName());
-            psmt.setString(4, a.getAc_time());
-            psmt.setString(5, a.getAc_location());
-            psmt.setString(6, a.getAcName());
-            psmt.setString(7,a.getAc_remarks());
-            psmt.setString(8,a.getMentorSign());
-            psmt.setString(9,a.getChargeSign());
-            psmt.setString(10, a.getSt_id());
+            //psmt.setString(1, a.getAc_id());
+            psmt.setString(1, a.getAc_img());
+            psmt.setString(2, a.getAc_meetingName());
+            psmt.setString(3, a.getAc_time());
+            psmt.setString(4, a.getAc_location());
+            psmt.setString(5, a.getAcName());
+            psmt.setString(6,a.getAc_remarks());
+            psmt.setString(7,a.getMentorSign());
+            psmt.setString(8,a.getChargeSign());
+            psmt.setString(9, a.getSt_id());
             psmt.executeUpdate();
             psmt.close();
 

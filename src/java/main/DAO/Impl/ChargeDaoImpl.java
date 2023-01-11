@@ -1,9 +1,9 @@
 package main.DAO.Impl;
 
-import main.DAO.MentorDao;
+import main.DAO.ChargeDao;
 import main.Util.DruidUtil;
-import main.pojo.Admin;
 import main.pojo.Mentor;
+import main.pojo.charge;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -12,43 +12,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MentorDaoImpl implements MentorDao {
+public class ChargeDaoImpl implements ChargeDao {
     @Override
-    public void addMentor(Mentor mentor) {
-
-    }
-
-    @Override
-    public void updateMentor(Mentor mentor) {
-
-    }
-
-    @Override
-    public void deleteMentor(String me_id) {
-
-    }
-
-    @Override
-    public Mentor getMentor(String me_id) {
-        return null;
-    }
-
-    @Override
-    public List<Mentor> findMentors(Mentor mentor) {
-        String STUDENT_INSERT_SQL = "select * from Mentor where me_name=? and me_pwd=? ";
+    public List<charge> findCharges(charge s) {
+        String STUDENT_INSERT_SQL = "select * from charge where c_name=? and c_pwd=? ";
         Connection con = null;
-        List<Mentor> a=new ArrayList<>();
+        List<charge> a=new ArrayList<>();
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(STUDENT_INSERT_SQL);
-            psmt.setString(1, mentor.getMe_name());
-            psmt.setString(2, mentor.getMe_pwd());
+            psmt.setString(1, s.getC_name());
+            psmt.setString(2, s.getC_pwd());
             ResultSet rs=psmt.executeQuery();
             while(rs.next()){
-                Mentor t=new Mentor();
-                t.setMe_id(rs.getString(1));
+                charge t=new charge();
+                t.setC_id(rs.getString(1));
                 a.add(t);
             }
             psmt.close();

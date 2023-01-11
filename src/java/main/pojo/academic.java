@@ -104,7 +104,7 @@ public class academic {
                 ", 学生编号='" + st_id + '\'' +
                 ", 导师签字='" + mentorSign + '\'' +
                 ", 学科负责人签字='" + chargeSign + '\'' +
-                '}';
+                '\n';
     }
 
     String mentorSign;
