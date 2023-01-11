@@ -2,12 +2,18 @@
   <library name="Maven: com.alibaba:druid:1.1.9">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/druid/1.1.9/druid-1.1.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../桌面/sqljdbc41.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/druid/1.1.9/druid-1.1.9-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/alibaba/druid/1.1.9/druid-1.1.9-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../桌面/sqljdbc_4.2.8112.200_chs/sqljdbc_4.2/chs/samples/adaptive" />
+      <root url="file://$PROJECT_DIR$/../../../../../桌面/sqljdbc_4.2.8112.200_chs/sqljdbc_4.2/chs/samples/connections" />
+      <root url="file://$PROJECT_DIR$/../../../../../桌面/sqljdbc_4.2.8112.200_chs/sqljdbc_4.2/chs/samples/datatypes" />
+      <root url="file://$PROJECT_DIR$/../../../../../桌面/sqljdbc_4.2.8112.200_chs/sqljdbc_4.2/chs/samples/resultsets" />
+      <root url="file://$PROJECT_DIR$/../../../../../桌面/sqljdbc_4.2.8112.200_chs/sqljdbc_4.2/chs/samples/sparse" />
     </SOURCES>
   </library>
 </component>

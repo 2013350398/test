@@ -21,8 +21,8 @@ public class AcademicDaoImpl implements AcademicDao {
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(Academic_UPDATE_SQL);
-            psmt.setString(1, st_id);
-            psmt.setString(2, sign);
+            psmt.setString(1, sign);
+            psmt.setString(2, st_id);
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -38,15 +38,15 @@ public class AcademicDaoImpl implements AcademicDao {
 
     @Override
     public void updateByMentor(String st_id,String sign) {
-        String Academic_UPDATE_SQL = "update academic set mentorSign=? where st_id=? ";
+        String Academic_UPDATE_SQL = "update academic set mentorSign = ? where st_id=? ";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(Academic_UPDATE_SQL);
-            psmt.setString(1, st_id);
-            psmt.setString(2, sign);
+            psmt.setString(1, sign);
+            psmt.setString(2, st_id);
             psmt.executeUpdate();
             psmt.close();
         }catch(Exception e){
@@ -132,7 +132,7 @@ public class AcademicDaoImpl implements AcademicDao {
 
     @Override
     public int countByCharge(String st_id) {
-        String Academic_SELECT_SQL = "select * from academic where st_id=#{st_id}";
+        String Academic_SELECT_SQL = "select * from academic where st_id=?";
         Connection con = null;
         int count=0;
         try{
@@ -140,9 +140,11 @@ public class AcademicDaoImpl implements AcademicDao {
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(Academic_SELECT_SQL);
+            psmt.setString(1,st_id);
             ResultSet rs=psmt.executeQuery();
             while(rs.next()){
                 count++;
+                System.out.println(count);
             }
 
 
