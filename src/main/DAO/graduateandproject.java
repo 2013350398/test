@@ -11,7 +11,7 @@ import main.project_identify.project_identifyController;
 import java.util.List;
 import java.util.Scanner;
 
-public class test {
+public class graduateandproject {
     private static Scanner sc=new Scanner(System.in);
     private static int cnt;
     private static graduateController con=new graduateController();
