@@ -12,6 +12,16 @@ public class Student {
     String st_type;
     String su_id;
 
+    int is_assistance;
+
+    public int getIs_assistance() {
+        return is_assistance;
+    }
+
+    public void setIs_assistance(int id_assistance) {
+        this.is_assistance = id_assistance;
+    }
+
     @Override
     public java.lang.String toString() {
         return "Student{" +
@@ -23,6 +33,7 @@ public class Student {
                 ", st_email=" + st_email +
                 ", st_type=" + st_type +
                 ", su_id=" + su_id +
+                ",is_assistance"+is_assistance+
                 '}';
     }
 
