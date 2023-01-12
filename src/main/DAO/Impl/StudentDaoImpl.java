@@ -186,4 +186,42 @@ public class StudentDaoImpl implements StudentDao {
         }
         return st;
     }
+
+    @Override
+    public List<Student> ISNOTAssistance() {
+        String sql = "select * from student where is_assistance=?";
+        Connection con = null;
+        List<Student>st=new ArrayList<>();
+        try{
+            DruidUtil druidUtil=null;
+            DataSource dataSource=druidUtil.getDataSource();
+            con=dataSource.getConnection();//获取连接池;
+            PreparedStatement psmt = con.prepareStatement(sql);//
+            psmt.setInt(1,0);
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()){
+                Student studenttemp = new Student();//每次都要new新的对象 list遍历不然会重复同一个
+                studenttemp.setSt_id(rs.getString("st_id"));
+                studenttemp.setSt_name(rs.getString("st_name"));
+                studenttemp.setSt_pwd(rs.getString("st_pwd"));
+                studenttemp.setSt_sex(rs.getString("st_sex"));
+                studenttemp.setSt_tel(rs.getString("st_tel"));;
+                studenttemp.setSt_email(rs.getString("st_email"));
+                studenttemp.setSt_type(rs.getString("st_type"));
+                studenttemp.setSu_id(rs.getString("su_id"));
+                studenttemp.setIs_assistance(rs.getInt("is_assistance"));
+                st.add(studenttemp);
+            }
+            psmt.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return st;
+    }
 }

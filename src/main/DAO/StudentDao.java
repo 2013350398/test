@@ -10,4 +10,6 @@ public interface StudentDao {
     void deleteStudent(String st_id);
     Student getStudent(String st_id);
     List<Student> findStudents(Student student);
+
+    List<Student> ISNOTAssistance();
 }

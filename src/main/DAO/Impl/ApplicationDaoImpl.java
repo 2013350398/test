@@ -48,7 +48,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
             PreparedStatement psmt = con.prepareStatement(sql);
             psmt.setString(1, application.getSt_id());
             psmt.setString(2, application.getCo_id());
-            psmt.setString(3, application.getSa_id());
+            psmt.setInt(3, application.getSa_id());
             psmt.executeUpdate();
             psmt.close();
         }catch (Exception e){
@@ -64,15 +64,15 @@ public class ApplicationDaoImpl implements ApplicationDao {
     }
 
     @Override
-    public void deleteApplication(String sa_id) {
-        String sql="delete from application where sa_id=?";
+    public void deleteApplication(String co_id) {
+        String sql="delete from application where co_id=?";
         Connection con = null;
         try{
             DruidUtil druidUtil=null;
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();//获取连接池;
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1, sa_id);
+            psmt.setString(1, co_id);
             psmt.executeUpdate();
             psmt.close();
         }catch (Exception e){
@@ -84,11 +84,10 @@ public class ApplicationDaoImpl implements ApplicationDao {
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
-    public Application getApplication(String sa_id) {
+    public Application getApplication(int sa_id) {
         String sql = "select * from application where sa_id=?";
         Connection con = null;
         Application application = new Application();
@@ -97,10 +96,10 @@ public class ApplicationDaoImpl implements ApplicationDao {
             DataSource dataSource=druidUtil.getDataSource();
             con=dataSource.getConnection();
             PreparedStatement psmt = con.prepareStatement(sql);
-            psmt.setString(1,sa_id);
+            psmt.setInt(1,sa_id);
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
-                application.setSa_id(rs.getString("sa_id"));
+                application.setSa_id(rs.getInt("sa_id"));
                 application.setSt_id(rs.getString("st_id"));
                 application.setCo_id(rs.getString("co_id"));
             }
@@ -130,7 +129,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
                 Application application = new Application();
-                application.setSa_id(rs.getString("sa_id"));
+                application.setSa_id(rs.getInt("sa_id"));
                 application.setSt_id(rs.getString("st_id"));
                 application.setCo_id(rs.getString("co_id"));
                 applicationList.add(application);
@@ -165,7 +164,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
             ResultSet rs = psmt.executeQuery();
             while (rs.next()){
                 ApaTeacher apaTeacher = new ApaTeacher();
-                apaTeacher.setSa_id(rs.getString("sa_id"));
+                apaTeacher.setSa_id(rs.getInt("sa_id"));
                 apaTeacher.setSt_id(rs.getString("st_id"));
                 apaTeacher.setSt_name(rs.getString("st_name"));
                 apaTeacher.setCo_id(rs.getString("co_id"));

@@ -7,10 +7,10 @@ public class Evaluate {
     private String st_id;
     private String co_id;
     private String self_eva;
-    private Date sub_time;
+    private String sub_time;
     private String te_eva;
     private String te_idea;
-    private Date te_time;
+    private String te_time;
 
     public int getEv_id() {
         return ev_id;
@@ -44,11 +44,11 @@ public class Evaluate {
         this.self_eva = self_eva;
     }
 
-    public Date getSub_time() {
+    public String getSub_time() {
         return sub_time;
     }
 
-    public void setSub_time(Date sub_time) {
+    public void setSub_time(String sub_time) {
         this.sub_time = sub_time;
     }
 
@@ -68,11 +68,11 @@ public class Evaluate {
         this.te_idea = te_idea;
     }
 
-    public Date getTe_time() {
+    public String getTe_time() {
         return te_time;
     }
 
-    public void setTe_time(Date te_time) {
+    public void setTe_time(String te_time) {
         this.te_time = te_time;
     }
 

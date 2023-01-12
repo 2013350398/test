@@ -1,17 +1,17 @@
 package main.CustomType;
 
 public class ApaTeacher {
-    private String sa_id;
+    private int sa_id;
     private String co_id;
     private String co_name;
     private String st_id;
     private String st_name;
 
-    public String getSa_id() {
+    public int getSa_id() {
         return sa_id;
     }
 
-    public void setSa_id(String sa_id) {
+    public void setSa_id(int sa_id) {
         this.sa_id = sa_id;
     }
 

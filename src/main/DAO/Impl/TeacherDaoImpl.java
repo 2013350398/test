@@ -136,7 +136,7 @@ public class TeacherDaoImpl implements TeacherDao {
             ResultSet rs = psmt.executeQuery();
             while(rs.next()){
                 Teacher teacher1 = new Teacher();
-                teacher1.setTe_id(rs.getString("co_id"));
+                teacher1.setTe_id(rs.getString("te_id"));
                 teacher1.setTe_pwd(rs.getString("te_pwd"));
                 teacher1.setTe_name(rs.getString("te_name"));
                 teacher1.setTe_tel(rs.getString("te_tel"));

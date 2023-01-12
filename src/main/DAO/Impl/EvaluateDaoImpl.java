@@ -27,10 +27,10 @@ public class EvaluateDaoImpl implements EvaluateDao {
             psmt.setString(1,evaluate.getSt_id());
             psmt.setString(2,evaluate.getCo_id());
             psmt.setString(3,evaluate.getSelf_eva());
-            psmt.setDate(4, (Date) evaluate.getSub_time());
+            psmt.setString(4,  evaluate.getSub_time());
             psmt.setString(5,evaluate.getTe_eva());
             psmt.setString(6,evaluate.getTe_idea());
-            psmt.setDate(7, (Date) evaluate.getTe_time());
+            psmt.setString(7,evaluate.getTe_time());
             psmt.executeUpdate();
             psmt.close();
         }catch (Exception e){
@@ -56,10 +56,10 @@ public class EvaluateDaoImpl implements EvaluateDao {
             psmt.setString(1,evaluate.getSt_id());
             psmt.setString(2,evaluate.getCo_id());
             psmt.setString(3,evaluate.getSelf_eva());
-            psmt.setDate(4, (Date) evaluate.getSub_time());
+            psmt.setString(4, evaluate.getSub_time());
             psmt.setString(5,evaluate.getTe_eva());
             psmt.setString(6,evaluate.getTe_idea());
-            psmt.setDate(7, (Date) evaluate.getTe_time());
+            psmt.setString(7, evaluate.getTe_time());
             psmt.setInt(8,evaluate.getEv_id());
             psmt.executeUpdate();
             psmt.close();
@@ -115,10 +115,10 @@ public class EvaluateDaoImpl implements EvaluateDao {
                 evaluate.setSt_id(rs.getString("st_id"));
                 evaluate.setCo_id(rs.getString("co_id"));
                 evaluate.setSelf_eva(rs.getString("self_eva"));
-                evaluate.setSub_time(rs.getDate("sub_time"));
+                evaluate.setSub_time(rs.getString("sub_time"));
                 evaluate.setTe_eva(rs.getString("te_eva"));
                 evaluate.setTe_idea(rs.getString("te_idea"));
-                evaluate.setTe_time(rs.getDate("te_time"));
+                evaluate.setTe_time(rs.getString("te_time"));
             }
             psmt.close();
         }catch (Exception e){
@@ -151,10 +151,10 @@ public class EvaluateDaoImpl implements EvaluateDao {
                 evaluate.setSt_id(rs.getString("st_id"));
                 evaluate.setCo_id(rs.getString("co_id"));
                 evaluate.setSelf_eva(rs.getString("self_eva"));
-                evaluate.setSub_time(rs.getDate("sub_time"));
+                evaluate.setSub_time(rs.getString("sub_time"));
                 evaluate.setTe_eva(rs.getString("te_eva"));
                 evaluate.setTe_idea(rs.getString("te_idea"));
-                evaluate.setTe_time(rs.getDate("te_time"));
+                evaluate.setTe_time(rs.getString("te_time"));
                 evaluateList.add(evaluate);
             }
             psmt.close();
@@ -190,10 +190,10 @@ public class EvaluateDaoImpl implements EvaluateDao {
                 evaluate.setSt_id(rs.getString("st_id"));
                 evaluate.setCo_id(rs.getString("co_id"));
                 evaluate.setSelf_eva(rs.getString("self_eva"));
-                evaluate.setSub_time(rs.getDate("sub_time"));
+                evaluate.setSub_time(rs.getString("sub_time"));
                 evaluate.setTe_eva(rs.getString("te_eva"));
                 evaluate.setTe_idea(rs.getString("te_idea"));
-                evaluate.setTe_time(rs.getDate("te_time"));
+                evaluate.setTe_time(rs.getString("te_time"));
                 evaluateList.add(evaluate);
             }
             psmt.close();

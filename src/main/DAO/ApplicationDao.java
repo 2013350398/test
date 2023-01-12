@@ -8,8 +8,8 @@ import java.util.List;
 public interface ApplicationDao {
     void addApplication(Application application);
     void updateApplication(Application application);
-    void deleteApplication(String sa_id);
-    Application getApplication(String sa_id);
+    void deleteApplication(String co_id);
+    Application getApplication(int sa_id);
     List<Application> APPLICATION_LIST();
     List<ApaTeacher> APA_TEACHER_LIST(String tid);
 }

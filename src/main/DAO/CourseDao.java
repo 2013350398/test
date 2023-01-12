@@ -11,4 +11,5 @@ public interface CourseDao {
     void deleteCourse(String co_id);
     Course getCourse(String co_id);
     List<CourseTeacher> COURSE_LIST();
+    List<Course> getCourses();
 }
