@@ -16,6 +16,8 @@ import java.util.List;
 public class ReportDAOImpl implements ReportDAO {
 
     private static final String selectByNoSQL = "SELECT * FROM report WHERE achiev_no LIKE ?;";
+    private static final String selectByNoMentorSQL = "SELECT * FROM report WHERE achiev_no LIKE ? AND " +
+            "achiev_no IN (SELECT achiev_no FROM verify, me_st WHERE verify.st_id = me_st.st_id AND me_id = ?);";
     private static final String insertSQL = "INSERT INTO report VALUES(?,?,?,?,?,?,?);";
 
 
@@ -30,6 +32,42 @@ public class ReportDAOImpl implements ReportDAO {
             conn = DruidUtil.getConnection();
             pst = conn.prepareStatement(selectByNoSQL);
             pst.setString(1, achiev_no);
+            rs = pst.executeQuery();
+
+            while(rs.next()) {
+                Report report = new Report();
+                report.setAchiev_no(rs.getString("achiev_no"));
+                report.setRe_name(rs.getString("re_name"));
+                report.setRe_type(rs.getString("re_type"));
+                report.setRe_unit(rs.getString("re_unit"));
+                report.setRe_time(rs.getString("re_time"));
+                report.setRe_contri(rs.getInt("re_contri"));
+                report.setRe_evid(rs.getString("re_evid"));
+                reports.add(report);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DruidUtil.closeResultSet(rs);
+            DruidUtil.closePrepareStatement(pst);
+            DruidUtil.closeConnection(conn);
+        }
+
+        return reports;
+    }
+
+    @Override
+    public List<Report> selectByNoMentor(String achiev_no, String me_id) {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Report> reports = new ArrayList<>();
+
+        try {
+            conn = DruidUtil.getConnection();
+            pst = conn.prepareStatement(selectByNoMentorSQL);
+            pst.setString(1, achiev_no);
+            pst.setString(2, me_id);
             rs = pst.executeQuery();
 
             while(rs.next()) {

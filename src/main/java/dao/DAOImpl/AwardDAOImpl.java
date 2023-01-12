@@ -16,6 +16,8 @@ import java.util.List;
 public class AwardDAOImpl implements AwardDAO {
 
     private static final String selectByNoSQL = "SELECT * FROM award WHERE achiev_no LIKE ?;";
+    private static final String selectByNoMentorSQL = "SELECT * FROM award WHERE achiev_no LIKE ? AND " +
+            "achiev_no IN (SELECT achiev_no FROM verify, me_st WHERE verify.st_id = me_st.st_id AND me_id = ?);";
     private static final String insertSQL = "INSERT INTO award VALUES(?,?,?,?,?,?,?);";
 
 
@@ -30,6 +32,42 @@ public class AwardDAOImpl implements AwardDAO {
             conn = DruidUtil.getConnection();
             pst = conn.prepareStatement(selectByNoSQL);
             pst.setString(1, achiev_no);
+            rs = pst.executeQuery();
+
+            while(rs.next()) {
+                Award award = new Award();
+                award.setAchiev_no(rs.getString("achiev_no"));
+                award.setAw_name(rs.getString("aw_name"));
+                award.setAw_level(rs.getString("aw_level"));
+                award.setAw_grade(rs.getString("aw_grade"));
+                award.setAw_rank(rs.getInt("aw_rank"));
+                award.setAw_time(rs.getString("aw_time"));
+                award.setAw_evid(rs.getString("aw_evid"));
+                awards.add(award);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DruidUtil.closeResultSet(rs);
+            DruidUtil.closePrepareStatement(pst);
+            DruidUtil.closeConnection(conn);
+        }
+
+        return awards;
+    }
+
+    @Override
+    public List<Award> selectByNoMentor(String achiev_no, String me_id) {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Award> awards = new ArrayList<>();
+
+        try {
+            conn = DruidUtil.getConnection();
+            pst = conn.prepareStatement(selectByNoMentorSQL);
+            pst.setString(1, achiev_no);
+            pst.setString(2, me_id);
             rs = pst.executeQuery();
 
             while(rs.next()) {

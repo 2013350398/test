@@ -4,6 +4,7 @@ import dao.DAO;
 import dao.DAOFactory;
 import dao.DAOImpl.DAOSqlServer;
 import entity.*;
+import searchcriteria.SearchCriteria;
 import searchcriteria.VerifySearchCriteria;
 import util.LoadEvid;
 
@@ -88,42 +89,86 @@ public class StudentSubmitController {
     }
 
     /**
-     * 查询自己的成果审核情况
+     * 学生选择查询的成果类型
      */
-    public void selectVerify(String st_id){
+    public void selectVerifyMenu(String st_id){
         VerifySearchCriteria criteria = new VerifySearchCriteria();
+
+        System.out.println("选择要查询的申请：\n" +
+                "1. 全部\n" +
+                "2. 论文\n" +
+                "3. 奖励\n" +
+                "4. 标准\n" +
+                "5. 报告\n" +
+                "6. 专利\n" +
+                "7. 软硬件平台开发\n" +
+                "8. 教材\n" +
+                "9. 其他\n");
+        Scanner sc = new Scanner(System.in);
+        Integer choice = sc.nextInt();
+        String prefix = null;
+
+        switch(choice) {
+            case 1:
+                break;
+            case 2:
+                prefix = "TH";break;
+            case 3:
+                prefix = "AW"; break;
+            case 4:
+                prefix = "ST";break;
+            case 5:
+                prefix = "RE";break;
+            case 6:
+                prefix = "PA";break;
+            case 7:
+                prefix = "DE";break;
+            case 8:
+                prefix = "TE";break;
+            case 9:
+                prefix = "OT";break;
+            default:
+                break;
+        }
+
+        criteria.setAchiev_no(prefix);
+        criteria.setSt_id(st_id);
+        selectVerify(criteria);
+    }
+
+
+
+    /**
+     * 查询某类成果审核情况(直接输出)
+     */
+    public void selectVerify(VerifySearchCriteria criteria) {
         List<Verify> verifies = new ArrayList<>();
 
-        // 查询未审核的
-        criteria.setSt_id(st_id);
+        System.out.println("未审核成果: \n");
         criteria.setFirst_verify(0);
-        criteria.setLast_verify(0); // 因为用的是criteria具体实现的时候会把每个字段拼起来，entity里标识审核是否通过字段的默认值都是0
+        criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
         System.out.println(verifies);
 
-        // 查询导师已审核通过管理员未审核的
-        criteria.setSt_id(st_id);
+        System.out.println("未终审成果: \n");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
         System.out.println(verifies);
 
-        // 查询审核已通过的
-        criteria.setSt_id(st_id);
+        System.out.println("审核通过成果: \n");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(1);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
         System.out.println(verifies);
 
-        // 查询导师审核未通过的
-        criteria.setSt_id(st_id);
+        System.out.println("初审未通过成果:\n");
         criteria.setFirst_verify(-1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
         System.out.println(verifies);
 
-        // 查询管理员审核未通过的
-        criteria.setSt_id(st_id);
+        System.out.println("终审未通过成果: \n");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(-1);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
@@ -208,7 +253,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             thesis.setTh_index(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             thesis.setTh_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -308,7 +357,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             award.setAw_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             award.setAw_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -378,7 +431,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setSt_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setSt_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -458,7 +515,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setRe_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setRe_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -535,7 +596,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setPa_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setPa_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -590,7 +655,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setDe_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setDe_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -645,7 +714,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setTe_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setTe_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -695,7 +768,11 @@ public class StudentSubmitController {
             String evid = sc.next();
             achiev.setOt_evid(evid);
 
-            // 比如点了确定之后上传
+            // 如果取消直接退出
+            System.out.println("确定提交吗？(y/n) ");
+            String mark = sc.next();
+            if(!mark.equals("y")) return;
+
             achiev.setOt_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

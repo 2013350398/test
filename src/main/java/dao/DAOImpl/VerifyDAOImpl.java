@@ -312,7 +312,7 @@ public class VerifyDAOImpl implements VerifyDAO {
         PreparedStatement pst = null;
         ResultSet rs = null;
 
-        String criteriaSql = searchCriteria.getCriteriaSQL(searchSQL);
+        String criteriaSql = searchCriteria.getCriteriaSQL(searchByMentorSQL);
         List<Verify> verifies = new ArrayList<>();
 
         try{

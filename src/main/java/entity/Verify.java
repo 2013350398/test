@@ -7,10 +7,10 @@ public class Verify {
     private String st_id = null;
     private String submit_time = null;
     private String me_id = null;
-    private Integer first_verify = 0;
+    private Integer first_verify = null;
     private String first_time = null;
     private String ad_id = null;
-    private Integer last_verify = 0;
+    private Integer last_verify = null;
     private String last_time = null;
 
     public Verify() {};

@@ -48,6 +48,7 @@ public class LoadEvid {
                 fos.write(b, 0, len);
 
             serverPath = dfile.getPath();
+            System.out.println("下载完成!");
             fis.close();
             fos.close();
         } catch (FileNotFoundException e) {
