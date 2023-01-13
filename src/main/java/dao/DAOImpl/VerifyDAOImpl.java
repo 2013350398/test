@@ -22,11 +22,13 @@ public class VerifyDAOImpl implements VerifyDAO {
     public static final String selectByFirstStatusSQL = "SELECT * FROM verify WHERE first_verify = ?;";
     public static final String selectByLastStatusSQL = "SELECT * FROM verify WHERE last_verify = ?;";
 
-    public static final String insertSQL = "INSERT INTO verify(achiev_id, st_id) VALUES(?,?);";
-    public static final String updateSQL = "UPDATE verify SET me_id = ?, first_time = ?, first_verify = ?, ad_id = ?, last_time = ?, last_verify = ? WHERE achiev_no = ?;";
+    public static final String insertSQL = "INSERT INTO verify(achiev_no, st_id, submit_time) VALUES(?,?,?);";
+    public static final String updateMentorSQL = "UPDATE verify SET me_id = ?, first_time = ?, first_verify = ? WHERE achiev_no = ?;";
+    public static final String updateAdminSQL = "UPDATE verify SET ad_id = ?, last_time = ?, last_verify = ? WHERE achiev_no = ?;";
 
     public static final String searchSQL = "SELECT * FROM verify WHERE ";
-    public static final String searchByMentorSQL = "SELECT * FROM me_st, verify WHERE me_id = ? AND verify.st_id = me_st.st_id AND ";
+    public static final String searchByMentorSQL = "SELECT verify.achiev_no, verify.st_id, submit_time, verify.me_id, first_verify, first_time, verify.ad_id, last_verify, last_time" +
+            " FROM me_st, verify WHERE me_st.me_id = ? AND verify.st_id = me_st.st_id AND ";
 
     @Override
     public List<Verify> selectAll() {
@@ -356,6 +358,7 @@ public class VerifyDAOImpl implements VerifyDAO {
             pst = conn.prepareStatement(insertSQL);
             pst.setString(1, verify.getAchiev_no());
             pst.setString(2, verify.getSt_id());
+            pst.setString(3, verify.getSubmit_time());
             ans = pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -378,17 +381,19 @@ public class VerifyDAOImpl implements VerifyDAO {
 
         try {
             conn = DruidUtil.getConnection();
-            pst = conn.prepareStatement(updateSQL);
-            pst.setString(7, verify.getAchiev_no());
             if(verify.getMe_id() != null) {
+                pst = conn.prepareStatement(updateMentorSQL);
+                pst.setString(4, verify.getAchiev_no());
                 pst.setString(1, verify.getMe_id());
                 pst.setString(2, verify.getFirst_time());
                 pst.setInt(3, verify.getFirst_verify());
             }
             if(verify.getAd_id() != null) {
-                pst.setString(4, verify.getAd_id());
-                pst.setString(5, verify.getLast_time());
-                pst.setInt(6, verify.getLast_verify());
+                pst = conn.prepareStatement(updateAdminSQL);
+                pst.setString(4, verify.getAchiev_no());
+                pst.setString(1, verify.getAd_id());
+                pst.setString(2, verify.getLast_time());
+                pst.setInt(3, verify.getLast_verify());
             }
             ans = pst.executeUpdate();
 

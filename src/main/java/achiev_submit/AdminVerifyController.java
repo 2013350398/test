@@ -40,34 +40,49 @@ public class AdminVerifyController {
                 criteria.setFirst_verify(1);
                 criteria.setLast_verify(0);
                 verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-                System.out.println(verifies);
+//                System.out.println(verifies);
+                for (Verify verify: verifies)
+                    System.out.println(verify);
                 break;
             case 2:
                 criteria.setFirst_verify(1);
                 criteria.setLast_verify(1);
                 verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-                System.out.println(verifies);
+//                System.out.println(verifies);
+                for (Verify verify: verifies)
+                    System.out.println(verify);
                 break;
             case 3:
                 criteria.setFirst_verify(1);
                 criteria.setLast_verify(-1);
                 verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-                System.out.println(verifies);
+//                System.out.println(verifies);
+                for (Verify verify: verifies)
+                    System.out.println(verify);
+                break;
             case 4:
                 criteria.setFirst_verify(0);
                 criteria.setLast_verify(0);
                 verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-                System.out.println(verifies);
+//                System.out.println(verifies);
+                for (Verify verify: verifies)
+                    System.out.println(verify);
+                break;
             case 5:
                 criteria.setFirst_verify(-1);
                 criteria.setLast_verify(0);
                 verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-                System.out.println(verifies);
+//                System.out.println(verifies);
+                for (Verify verify: verifies)
+                    System.out.println(verify);
+                break;
+            default:
+                break;
         }
     }
 
     public void verifyAchiev(String ad_id) {
-        System.out.println("输入成果编号: \n");
+        System.out.println("输入成果编号: ");
         Scanner sc = new Scanner(System.in);
         String achiev_no = sc.next();
 
@@ -155,14 +170,27 @@ public class AdminVerifyController {
     }
 
     public void lastVerify(String ad_id) {
-        System.out.println("输入成果编号: \n");
+        System.out.println("输入成果编号: ");
         Scanner sc = new Scanner(System.in);
         String achiev_no = sc.next();
 
         VerifySearchCriteria criteria = new VerifySearchCriteria();
         criteria.setAchiev_no(achiev_no);
         List<Verify> verifies =  DAOFactory.getInstance().getVerifyDAO().selectByAchiev(achiev_no);
-        System.out.println(verifies);
+//        System.out.println(verifies);
+        Integer isFirstVerify = 0;
+        for (Verify verify: verifies) {
+            System.out.println(verify);
+            isFirstVerify = verify.getFirst_verify();
+        }
+
+        if(isFirstVerify == 0) {
+            System.out.println("未初审! 不可进行终审!");
+            return;
+        } else if (isFirstVerify == -1){
+            System.out.println("初审未通过，不可终审！");
+            return;
+        }
 
         System.out.println("修改审核状态为: \n" +
                 "1. 通过\n" +

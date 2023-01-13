@@ -35,6 +35,7 @@ public class AdminAddStudent {
     }
 
     public void addMe_StByExcel() {
+        System.out.println("输入Excel文件路径:");
         Scanner sc = new Scanner(System.in);
         String filePath = sc.next();
         try {
@@ -53,8 +54,21 @@ public class AdminAddStudent {
     }
 
     // 生成导师名下的学生账号
-    public void addStUser(List<Student> students) {
-        // 传入参数和生成形式？？？
-        // 需要调学生管理（？）那边的接口，这边表没建全
+    public void addStUser() {
+        System.out.println("输入Excel文件路径:");
+        Scanner sc = new Scanner(System.in);
+        String filePath = sc.next();
+        try {
+            Workbook workbook = Workbook.getWorkbook(new File(filePath));
+            Sheet sheet = workbook.getSheet(0);
+            for(int i = 1; i < sheet.getRows(); i ++) {
+                String st_id = sheet.getCell(0, i).getContents();
+                DAOFactory.getInstance().getStudentDAO().insertStUser(st_id, st_id);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (BiffException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

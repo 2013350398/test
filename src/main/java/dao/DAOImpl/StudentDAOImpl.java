@@ -18,6 +18,8 @@ public class StudentDAOImpl implements StudentDAO {
     private static final String selectByNoSQL = "SELECT * FROM student WHERE st_id = ?;";
     private static final String selectByNameSQL = "SELECT * FROM student WHERE st_name = ?;";
 
+    private static final String insertStUserSQL = "INSERT INTO student(st_id, st_pwd) VALUES(?, ?);";
+
     @Override
     public List<Student> selectAll() {
         Connection conn = null;
@@ -98,5 +100,28 @@ public class StudentDAOImpl implements StudentDAO {
         }
 
         return students;
+    }
+
+    @Override
+    public Integer insertStUser(String st_id, String st_pwd) {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        Integer rs;
+
+        try {
+            conn = DruidUtil.getConnection();
+            pst = conn.prepareStatement(insertStUserSQL);
+            pst.setString(1, st_id);
+            pst.setString(2, st_id);
+            rs = pst.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DruidUtil.closePrepareStatement(pst);
+            DruidUtil.closeConnection(conn);
+        }
+
+        return rs;
     }
 }

@@ -12,4 +12,6 @@ public interface StudentDAO {
     public Student selectBySNo(String st_no);
     public List<Student> selectByName(String st_name);
 
+    public Integer insertStUser(String st_id, String st_pwd);
+
 }

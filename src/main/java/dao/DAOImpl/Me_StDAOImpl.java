@@ -1,10 +1,4 @@
-/**
- * @BelongsProject: database_keshe
- * @BelongsPackage: dao.DAOImpl
- * @ClassName:Me_StDAOImpl
- * @Author: yuzuwxy
- * @CreateTime: 2023-01-11  11:48
- */
+
 package dao.DAOImpl;
 
 import dao.Me_StDAO;
