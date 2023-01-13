@@ -149,7 +149,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
     @Override
     public List<ApaTeacher> APA_TEACHER_LIST(String tid) {
-        String sql = "select sa_id,student.st_id,st_name,course.co_id,co_name " +
+        String sql = "select sa_id,application.st_id,st_name,application.co_id,co_name " +
                 "from application,course,student " +
                 "where application.co_id=course.co_id and application.st_id = student.st_id " +
                 "and course.ct_id=?";
@@ -168,7 +168,9 @@ public class ApplicationDaoImpl implements ApplicationDao {
                 apaTeacher.setSt_id(rs.getString("st_id"));
                 apaTeacher.setSt_name(rs.getString("st_name"));
                 apaTeacher.setCo_id(rs.getString("co_id"));
-                apaTeacher.setCo_name("co_name");
+                apaTeacher.setCo_name(rs.getString("co_name"));
+//                System.out.println(String.valueOf(apaTeacher.getSa_id())+' '+apaTeacher.getSt_id()+' '+apaTeacher.getSt_name()+' '
+//                +apaTeacher.getCo_id()+' '+apaTeacher.getCo_name());
                 apaTeacherList.add(apaTeacher);
             }
             psmt.close();

@@ -18,7 +18,8 @@ public class test {
     private static ApplyController ac = new ApplyController();
     public static void AdminFunc(Admin temp){
         while(true){
-            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.退出");
+            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.为学生分配助教" +
+                    "\n7.退出");
             cnt=sc.nextInt();
             int t;
             switch (cnt){
@@ -84,9 +85,10 @@ public class test {
                     con.addGraduate(s.getSt_id());//新建毕业信息
                     break;
                 case 6:
+                    ac.Allocation();
                     break;
             }
-            if(cnt==6){break;}
+            if(cnt==7){break;}
         }
 
 
@@ -176,8 +178,6 @@ public class test {
                 case 5:
                     ac.stuEvaluate(temp.getSt_id());
                     break;
-                case 6:
-                    break;
             }
             if(cnt==6){
                 break;
@@ -193,7 +193,7 @@ public class test {
 
     public static void TeacherFunc(Teacher temp){
         while (true){
-            System.out.println("1.选择助教\n2.填写助教评定表\n3.分配助教\n4.退出");
+            System.out.println("1.选择助教\n2.填写助教评定表\n3.退出");
             System.out.println("请输入您要进行的操作:");
             cnt = sc.nextInt();
             switch (cnt){
@@ -203,13 +203,8 @@ public class test {
                 case 2:
                     ac.teaEvaluate(temp.getTe_id());
                     break;
-                case 3:
-                    ac.Allocation();
-                    break;
-                case 4:
-                    break;
             }
-            if(cnt == 4)
+            if(cnt == 3)
                 break;
         }
     }
