@@ -7,15 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb11c9ea-9f6f-4f5a-96dd-86feee9790ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Sys.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ApplyAssistance/ApplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ApplyAssistance/ApplyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/AcademicDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/AcademicDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/achieveSys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/achieveSys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/graduateandproject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,6 +76,7 @@
           <entry key="class" value="1" />
           <entry key="java" value="112" />
           <entry key="properties" value="1" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -91,6 +84,7 @@
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="112" />
           <entry key="Properties" value="1" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -103,29 +97,38 @@
         <counts>
           <entry key="dummy" value="4" />
           <entry key="java" value="828" />
-          <entry key="txt" value="8" />
+          <entry key="txt" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="828" />
-          <entry key="PLAIN_TEXT" value="12" />
+          <entry key="PLAIN_TEXT" value="30" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/DAO/test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="93">
-              <caret line="240" column="45" lean-forward="true" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="45" />
+              <caret line="240" column="67" lean-forward="true" selection-start-line="240" selection-start-column="67" selection-end-line="240" selection-end-column="67" />
               <folding>
                 <element signature="method#Project_leaderFunc#0;class#graduateandproject#0" />
                 <element signature="method#ChargeFunc#0;class#graduateandproject#0" />
                 <element signature="method#login#0;class#graduateandproject#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1026">
+              <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -223,9 +226,9 @@
       <find>thesis</find>
       <find>me_id</find>
       <find>searchByMentorSQL</find>
-      <find>student</find>
       <find>irst_verify</find>
       <find>verify</find>
+      <find>student</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -368,7 +371,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1673626081720" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1673626205072" />
     <property name="last_opened_file_path" value="D:/tomcat/apache-tomcat-9.0.24/lib/jxl-2.6.12.1.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -522,7 +525,7 @@
       <workItem from="1673361123076" duration="847000" />
       <workItem from="1673362446724" duration="113000" />
       <workItem from="1673503696990" duration="8554000" />
-      <workItem from="1673616399838" duration="9494000" />
+      <workItem from="1673616399838" duration="9749000" />
     </task>
     <task id="LOCAL-00001" summary="连接池代码、项目层次简单pojo和test（数据库叫keshe，在database.properties里面有）">
       <created>1670856311596</created>
@@ -587,17 +590,30 @@
       <option name="project" value="LOCAL" />
       <updated>1673512101679</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="调试了助教子系统和学术交流子系统">
+      <created>1673626042233</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673626042233</updated>
+    </task>
+    <task id="LOCAL-00011" summary="调试了助教子系统和学术交流子系统">
+      <created>1673626157015</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673626157015</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67615000" />
+    <option name="totallyTimeSpent" value="67870000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1099" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.093179636" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2660903" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -607,7 +623,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.535854" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.535854" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -618,7 +634,7 @@
       <window_info anchor="bottom" id="Messages" order="10" weight="0.19354838" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49917898" weight="0.15979381" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="13" sideWeight="0.49917898" visible="true" weight="0.32985657" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -703,19 +719,10 @@
     <MESSAGE value="新建菜单和登录方法，测试项目管理子系统和毕业审核子系统测试逻辑。" />
     <MESSAGE value="修改业务逻辑实现的调用测试类并补充鲁棒性细节" />
     <MESSAGE value="merge子系统" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge子系统" />
+    <MESSAGE value="调试了助教子系统和学术交流子系统" />
+    <option name="LAST_COMMIT_MESSAGE" value="调试了助教子系统和学术交流子系统" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/DAO/AwardDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/pojo/Other.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1391,12 +1398,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/DAO/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
-          <caret line="240" column="45" lean-forward="true" selection-start-line="240" selection-start-column="45" selection-end-line="240" selection-end-column="45" />
+          <caret line="240" column="67" lean-forward="true" selection-start-line="240" selection-start-column="67" selection-end-line="240" selection-end-column="67" />
           <folding>
             <element signature="method#Project_leaderFunc#0;class#graduateandproject#0" />
             <element signature="method#ChargeFunc#0;class#graduateandproject#0" />
             <element signature="method#login#0;class#graduateandproject#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
         </state>
       </provider>
     </entry>
