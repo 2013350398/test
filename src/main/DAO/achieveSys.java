@@ -32,7 +32,7 @@ public class achieveSys {
         switch(choice) {
             case 1:
                 // if(student.getSt_type().equals("博士研究生"))  // 本地数据库没有放这个字段，汇总就可以用了
-                if(student.getSt_id().equals("博士研究生"))     // 用一个本地有的字段随便测一测
+                if(student.getSt_id().equals("博士"))     // 用一个本地有的字段随便测一测
                     ssc.PhDsubmitMenu(student.getSt_id());
                 else
                     ssc.MDsubmitMenu(student.getSt_id());

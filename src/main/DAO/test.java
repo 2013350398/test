@@ -1,9 +1,11 @@
 package main.DAO;
 
-import main.DAO.Impl.AdminDaoImpl;
-import main.DAO.Impl.MentorDaoImpl;
-import main.DAO.Impl.Project_leaderDaoImpl;
-import main.DAO.Impl.StudentDaoImpl;
+import main.ApplyAssistance.ApplyController;
+import main.DAO.Impl.*;
+import main.achiev_submit.AdminAddStudent;
+import main.achiev_submit.AdminVerifyController;
+import main.achiev_submit.MentorVerifyController;
+import main.achiev_submit.StudentSubmitController;
 import main.pojo.*;
 import main.graduate.graduateController;
 import main.project_identify.projectController;
@@ -11,15 +13,21 @@ import main.project_identify.project_identifyController;
 import java.util.List;
 import java.util.Scanner;
 
-public class graduateandproject {
+public class test {
     private static Scanner sc=new Scanner(System.in);
     private static int cnt;
     private static graduateController con=new graduateController();
     private static project_identifyController pic=new project_identifyController();
     private static projectController pc=new projectController();
+    private static ApplyController ac = new ApplyController();
+
+    private static AdminAddStudent aad = new AdminAddStudent();
+    private static AdminVerifyController avc = new AdminVerifyController();
+    private static MentorVerifyController mvc = new MentorVerifyController();
+    private static StudentSubmitController ssc = new StudentSubmitController();
     public static void AdminFunc(Admin temp){
         while(true){
-            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.退出");
+            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.助教分配\n7.退出");
             cnt=sc.nextInt();
             sc.nextLine();
             int t;
@@ -67,9 +75,27 @@ public class graduateandproject {
                     break;
                 case 3:
                     //成果认定
+                    System.out.println("请选择: \n" + "1. 查看成果审核信息\n" + "2. 查看提交成果详细信息\n" + "3. 修改成果终审状态\n");
+                    Integer choice = sc.nextInt();
+
+                    switch (choice) {
+                        case 1:
+                            avc.select(temp.getAd_id());
+                            break;
+                        case 2:
+                            avc.verifyAchiev(temp.getAd_id());
+                            break;
+                        case 3:
+                            avc.lastVerify(temp.getAd_id());
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 4:
                     //学术交流认证
+                    System.out.println("显示学生学术交流情况表:\n");
+                    System.out.println(DAOFactory.getInstance().getAcademicDao().verify());
                     break;
                 case 5:
                     Student s=new Student();
@@ -88,6 +114,8 @@ public class graduateandproject {
                     con.addGraduate(s.getSt_id());//新建毕业信息
                     break;
                 case 6:
+                    ac.Allocation();
+                case 7:
                     break;
             }
             if(cnt==6){break;}
@@ -134,9 +162,37 @@ public class graduateandproject {
                     break;
                 case 2:
                     //成果审核
+                    System.out.println("请选择: \n" + "1. 查看成果审核信息\n" + "2. 查看提交成果详细信息\n" + "3. 修改成果初审状态\n");
+                    Integer choice = sc.nextInt();
+                    switch (choice) {
+                        case 1:
+                            mvc.selectBySelf(temp.getMe_id());
+                            break;
+                        case 2:
+                            mvc.verifyAchiev(temp.getMe_id());
+                            break;
+                        case 3:
+                            mvc.mentorFirstVerify(temp.getMe_id());
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 3:
                     //学术交流认证
+                    System.out.println("1.显示学生学术交流情况表\n2.审核签字");
+                    String s2=sc.next();
+                    if (s2.equals("1")) {
+                        System.out.println(DAOFactory.getInstance().getAcademicDao().verify());
+                    } else if (s2.equals("2")) {
+                        System.out.println("请输学生学号：");
+                        String st_id = sc.next();
+                        System.out.println("签字（通过或不通过）：");
+                        String sign = sc.next();
+                        System.out.println("学术交流会议id：");
+                        int i=sc.nextInt();
+                        DAOFactory.getInstance().getAcademicDao().updateByMentor(st_id, sign,i);
+                    }
                     break;
                 case 4:
                     break;
@@ -150,7 +206,7 @@ public class graduateandproject {
     }
     public static void StudentFunc(Student temp){
         while(true){
-            System.out.println("请选择功能：\n1.研究生项目认定申请\n2.研究生成果认定申请\n3.研究生学术交流申请\n4.助教申请\n5.退出");
+            System.out.println("请选择功能：\n1.研究生项目认定申请\n2.研究生成果认定申请\n3.研究生学术交流申请\n4.助教申请\n5.填写助教评定表\n6.退出");
             int t;
             cnt=sc.nextInt();
             sc.nextLine();
@@ -175,15 +231,56 @@ public class graduateandproject {
                     }
                     break;
                 case 2:
+                    //成果认定
+                    System.out.println("请选择:\n" + "1. 提交成果\n" + "2. 查看审核情况");
+                    Integer choice = sc.nextInt();
+                    switch(choice) {
+                        case 1:
+                            // if(student.getSt_type().equals("博士研究生"))  // 本地数据库没有放这个字段，汇总就可以用了
+                            if(temp.getSt_id().equals("博士研究生"))     // 用一个本地有的字段随便测一测
+                                ssc.PhDsubmitMenu(temp.getSt_id());
+                            else
+                                ssc.MDsubmitMenu(temp.getSt_id());
+                            break;
+                        case 2:
+                            ssc.selectVerifyMenu(temp.getSt_id());
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 3:
+                    //学术交流
+                    System.out.println("请输入学术交流信息：");
+                    academic a = new academic();
+                    /*System.out.println("学术交流id：");
+                    a.setAc_id(sc.next());*/
+//                    System.out.println("图片：");
+//                    a.setAc_img(sc.next());
+                    System.out.println("报告中英名称");
+                    a.setAc_meetingName(sc.next());
+                    System.out.println("会议地点：");
+                    a.setAc_location(sc.next());
+                    System.out.println("会议时间:");
+                    a.setAc_time(sc.next());
+                    System.out.println("学术交流活动名称:");
+                    a.setAcName(sc.next());
+                    System.out.println("备注");
+                    a.setAc_remarks(sc.next());
+                    System.out.println("学生学号：");
+                    a.setSt_id(sc.next());
+                    DAOFactory.getInstance().getAcademicDao().insertByStudent(a);
                     break;
                 case 4:
+                    ac.Apply(temp.getSt_id());
                     break;
                 case 5:
+                    ac.stuEvaluate(temp.getSt_id());
+                    break;
+                case 6:
                     break;
             }
-            if(cnt==5){
+            if(cnt==6){
                 break;
             }
         }
@@ -224,6 +321,55 @@ public class graduateandproject {
             if(cnt==5){
                 break;
             }
+        }
+    }
+
+
+    public static void ChargeFunc(charge temp){
+        while(true){
+            System.out.println("1.显示学生学术交流情况表\n2.审核签字\n3.查看某位学生学术交流次数\n4.退出");
+            String s1=sc.next();
+            if (s1.equals("1")) {
+                System.out.println(DAOFactory.getInstance().getAcademicDao().verify());
+            } else if (s1.equals("2")) {
+                System.out.println("请输学生学号：");
+                String st_id = sc.next();
+                System.out.println("签字（通过或不通过）：");
+                String sign = sc.next();
+                System.out.println("学术交流会议id：");
+                int i=sc.nextInt();
+                DAOFactory.getInstance().getAcademicDao().updateByCharge(st_id, sign,i);
+            }else if (s1.equals("3")){
+                System.out.println("请输学生学号：");
+                String st_id = sc.next();
+                int a=DAOFactory.getInstance().getAcademicDao().countByCharge(st_id);
+                System.out.println("学号："+st_id+","+a+"次");
+            }else if(s1.equals("4")){
+                break;
+            }
+        }
+    }
+
+    public static void TeacherFunc(Teacher temp){
+        while (true){
+            System.out.println("1.选择助教\n2.填写助教评定表\n3.分配助教\n4.退出");
+            System.out.println("请输入您要进行的操作:");
+            cnt = sc.nextInt();
+            switch (cnt){
+                case 1:
+                    ac.Judge(temp.getTe_id());
+                    break;
+                case 2:
+                    ac.teaEvaluate(temp.getTe_id());
+                    break;
+                case 3:
+                    ac.Allocation();
+                    break;
+                case 4:
+                    break;
+            }
+            if(cnt == 4)
+                break;
         }
     }
     public static void login(){
@@ -286,8 +432,28 @@ public class graduateandproject {
                     }
                     break;
                 case 5:
+                    ChargeDaoImpl charge=new ChargeDaoImpl();
+                    charge c=new charge();
+                    c.setC_name(name);
+                    c.setC_pwd(pwd);
+                    List<charge>charges=charge.findCharges(c);
+                    if(charges.size()>0){ ChargeFunc(charges.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该学科负责人或密码错误！");
+                    }
                     break;
                 case 6:
+                    TeacherDaoImpl teacher=new TeacherDaoImpl();
+                    Teacher te=new Teacher();
+                    te.setTe_name(name);
+                    te.setTe_pwd(pwd);
+                    List<Teacher>teachers=teacher.TEACHER_LIST(te);
+                    if(teachers.size()>0){ TeacherFunc(teachers.get(0)); }
+                    else{
+                        flag=1;
+                        System.out.println("不存在该学生或密码错误！");
+                    }
                     break;
                 default:
                     break;

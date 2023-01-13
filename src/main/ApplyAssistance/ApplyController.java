@@ -47,7 +47,7 @@ public class ApplyController {
             System.out.println("========================================");
             System.out.println("申请编号\t课程号\t课程名\t学生学号\t学生姓名");
             for(ApaTeacher apaTeacher:apaTeacherList)
-                System.out.println(apaTeacher.getSa_id()+'\t'+apaTeacher.getCo_id()+'\t'+apaTeacher.getCo_name()
+                System.out.println(String.valueOf(apaTeacher.getSa_id())+'\t'+apaTeacher.getCo_id()+'\t'+apaTeacher.getCo_name()
                         +'\t'+apaTeacher.getSt_id()+'\t'+apaTeacher.getSt_name());
             System.out.println("请输入您要选择的助教的申请表单号:");
             int sa_id = sc.nextInt();
@@ -183,6 +183,11 @@ public class ApplyController {
                 n=courses.size();
             else
                 n=students.size();
+            System.out.println("共有"+students.size()+"位同学未选到助教课程");
+            System.out.println("学号\t姓名");
+            for (Student student:students){
+                System.out.println(student.getSt_id()+'\t'+student.getSt_name());
+            }
             for(int i=0;i<n;i++){
                 Student student=students.get(i);
                 student.setIs_assistance(1);
@@ -197,11 +202,11 @@ public class ApplyController {
                 DAOFactory.getInstance().getEvaluateDao().addEvaluate(evaluate);
                 //更新课程表
                 DAOFactory.getInstance().getCourseDAO().updateCourse(course);
-                System.out.println("分配成功!\n输入0退出：");
-                int c = sc.nextInt();
-                if(c == 0)
-                    break;
             }
+            System.out.println("分配成功!\n输入0退出：");
+            int c = sc.nextInt();
+            if(c == 0)
+                break;
         }
     }
 }

@@ -183,7 +183,7 @@ public class StudentSubmitController {
         synchronized (this) {
             Thesis thesis = new Thesis();
             Verify verify = new Verify();
-
+            verify.setSt_id(st_id);
             // 生成成果编号
             String prefix = "TH";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm");
@@ -211,13 +211,13 @@ public class StudentSubmitController {
             Integer status = sc.nextInt();
             switch(status) {
                 case 1:
-                    thesis.setTh_public("录用未发表");
+                    thesis.setTh_status("录用未发表");
                     break;
                 case 2:
-                    thesis.setTh_public("已发表");
+                    thesis.setTh_status("已发表");
                     break;
                 default:
-                    thesis.setTh_public("录用未发表");
+                    thesis.setTh_status("录用未发表");
                     break;
             }
 
@@ -238,20 +238,20 @@ public class StudentSubmitController {
             Integer lib = sc.nextInt();
             switch(lib) {
                 case 1:
-                    thesis.setTh_public("学院高质量论文库");
+                    thesis.setTh_lib("学院高质量论文库");
                     break;
                 case 2:
-                    thesis.setTh_public("学院核心论文库");
+                    thesis.setTh_lib("学院核心论文库");
                     break;
                 default:
-                    thesis.setTh_public("学院高质量论文库");
+                    thesis.setTh_lib("学院高质量论文库");
                     break;
             }
 
             System.out.println("请输入论文扫描或PDF材料本地存储路径:\n");
             sc = new Scanner(System.in);
             String evid = sc.next();
-            thesis.setTh_index(evid);
+            thesis.setTh_evid(evid);
 
             // 如果取消直接退出
             System.out.println("确定提交吗？(y/n) ");
@@ -361,7 +361,7 @@ public class StudentSubmitController {
             System.out.println("确定提交吗？(y/n) ");
             String mark = sc.next();
             if(!mark.equals("y")) return;
-
+//C:\Users\20133\Desktop\achieve.zip
             award.setAw_evid(LoadEvid.uploadEvid(evid));
             date = new Date();
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

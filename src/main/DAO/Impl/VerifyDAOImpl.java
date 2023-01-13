@@ -6,6 +6,7 @@ import main.pojo.Student;
 import main.pojo.Verify;
 import main.searchcriteria.SearchCriteria;
 import main.Util.DruidUtil;
+import main.searchcriteria.VerifySearchCriteria;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,11 +23,11 @@ public class VerifyDAOImpl implements VerifyDAO {
     public static final String selectByFirstStatusSQL = "SELECT * FROM verify WHERE first_verify = ?;";
     public static final String selectByLastStatusSQL = "SELECT * FROM verify WHERE last_verify = ?;";
 
-    public static final String insertSQL = "INSERT INTO verify(achiev_id, st_id) VALUES(?,?);";
+    public static final String insertSQL = "INSERT INTO verify(achiev_no, st_id) VALUES(?,?);";
     public static final String updateSQL = "UPDATE verify SET me_id = ?, first_time = ?, first_verify = ?, ad_id = ?, last_time = ?, last_verify = ? WHERE achiev_no = ?;";
 
     public static final String searchSQL = "SELECT * FROM verify WHERE ";
-    public static final String searchByMentorSQL = "SELECT * FROM me_st, verify WHERE me_id = ? AND verify.st_id = me_st.st_id AND ";
+    public static final String searchByMentorSQL = "SELECT * FROM me_st, verify WHERE me_st.me_id = ? AND verify.st_id = me_st.st_id AND verify.first_verify= ? AND verify.last_verify= ?";
 
     @Override
     public List<Verify> selectAll() {
@@ -307,20 +308,21 @@ public class VerifyDAOImpl implements VerifyDAO {
     }
 
     @Override
-    public List<Verify> salectByMentorCriteria(String me_id, SearchCriteria searchCriteria){
+    public List<Verify> salectByMentorCriteria(String me_id, SearchCriteria searchCriteria){//SearchCriteria
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
 
         String criteriaSql = searchCriteria.getCriteriaSQL(searchByMentorSQL);
         List<Verify> verifies = new ArrayList<>();
-
+        VerifySearchCriteria vsc=(VerifySearchCriteria)searchCriteria;
         try{
             conn = DruidUtil.getConnection();
             pst = conn.prepareStatement(criteriaSql);
             pst.setString(1, me_id);
+            pst.setInt(2, vsc.getFirst_verify());
+            pst.setInt(3, vsc.getLast_verify());
             rs = pst.executeQuery();
-
             while(rs.next()) {
                 Verify verify = new Verify();
                 verify.setAchiev_no(rs.getString("achiev_no"));

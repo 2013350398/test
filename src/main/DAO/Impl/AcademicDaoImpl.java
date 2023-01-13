@@ -82,6 +82,10 @@ public class AcademicDaoImpl implements AcademicDao {
                 a.setAc_time(rs.getString("ac_time"));
                 a.setAc_meetingName(rs.getString("ac_meetingName"));
                 a.setAcName(rs.getString("ac_acName"));
+                a.setSt_id(rs.getString("st_id"));
+                a.setChargeSign(rs.getString("chargeSign"));
+                a.setMentorSign(rs.getString("mentorSign"));
+
                 list.add(a);
             }
             psmt.close();
