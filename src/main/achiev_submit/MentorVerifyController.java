@@ -19,45 +19,47 @@ public class MentorVerifyController {
         VerifySearchCriteria criteria = new VerifySearchCriteria();
         List<Verify> verifies = new ArrayList<>();
 
-        System.out.println("未审核:\n");
+        System.out.println("未审核:");
         criteria.setFirst_verify(0);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("待终审:\n");
+        System.out.println("待终审:");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("已通过:\n");
+        System.out.println("已通过:");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(1);
         verifies = DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("初审未通过: \n");
+        System.out.println("初审未通过: ");
         criteria.setFirst_verify(-1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("终审未通过: \n");
+        System.out.println("终审未通过: ");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(-1);
         verifies = DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
     }
 
     /**
      * 导师审核
      */
     public void verifyAchiev(String me_id) {
-        // 有 输入了不是自己名下学生提交的成果的成果编号 的可能性
-        // 如果有前端可以直接每一条旁边搞个按钮，唉，命令行还要考虑不能让他查到其他的成果
-        // 而且不十分友好，还得用户自己输编号
-        System.out.println("输入成果编号: \n");
+        System.out.println("输入成果编号: ");
         Scanner sc = new Scanner(System.in);
         String achiev_no = sc.next();
 
@@ -65,7 +67,8 @@ public class MentorVerifyController {
         // 显示成果信息
         if(achiev_no.contains("TH")) {
             result = DAOFactory.getInstance().getThesisDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -75,7 +78,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("AW")) {
             result = DAOFactory.getInstance().getAwardDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -85,7 +89,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("ST")) {
             result = DAOFactory.getInstance().getStandardDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -95,7 +100,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("RE")) {
             result = DAOFactory.getInstance().getReportDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -105,7 +111,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("PA")) {
             result = DAOFactory.getInstance().getReportDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -115,7 +122,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("DE")) {
             result = DAOFactory.getInstance().getDevelopmentDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -125,7 +133,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("TE")) {
             result = DAOFactory.getInstance().getTextbookDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -135,7 +144,8 @@ public class MentorVerifyController {
         }
         if(achiev_no.contains("OT")) {
             result = DAOFactory.getInstance().getOtherDAO().selectByNoMentor(achiev_no, me_id);
-            System.out.println(result);
+            for (Verify verify: verifies)
+                System.out.println(verify);
 
             System.out.println("下载佐证材料到本地？ (y/n) ");
             String mark = sc.next();
@@ -146,14 +156,15 @@ public class MentorVerifyController {
     }
 
     public void mentorFirstVerify(String me_id) {
-        System.out.println("输入成果编号: \n");
+        System.out.println("输入成果编号: ");
         Scanner sc = new Scanner(System.in);
         String achiev_no = sc.next();
 
         VerifySearchCriteria criteria = new VerifySearchCriteria();
         criteria.setAchiev_no(achiev_no);
         List<Verify> verifies =  DAOFactory.getInstance().getVerifyDAO().salectByMentorCriteria(me_id, criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
         System.out.println("修改审核状态为: \n" +
                 "1. 通过\n" +
@@ -164,11 +175,11 @@ public class MentorVerifyController {
         if (choice != 0) {
             for (Verify verify: verifies) {
                 verify.setMe_id(me_id);
-                verify.setLast_verify(choice);
+                verify.setFirst_verify(choice);
 
                 Date date = new Date();
                 SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                verify.setLast_time(s.format(date));
+                verify.setFirst_time(s.format(date));
 
                 DAOFactory.getInstance().getVerifyDAO().updateStatus(verify);
             }

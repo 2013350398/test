@@ -26,8 +26,8 @@ public class StudentSubmitController {
                 "3. 标准\n" +
                 "4. 专利\n" +
                 "5. 报告\n" +
-                "6. 软硬件平台开发证明\n");
-        System.out.println("输入选项前的序号选择要提交的成果类型: \n");
+                "6. 软硬件平台开发证明");
+        System.out.println("输入选项前的序号选择要提交的成果类型: ");
         Scanner sc = new Scanner(System.in);
         // 假设输入就是合法的，如果要不合法输入的情况之后再添
         int choice = sc.nextInt();
@@ -51,7 +51,7 @@ public class StudentSubmitController {
                 submitDevelopment(st_id);
                 break;
             default:
-                System.out.println("序号无效\n");
+                System.out.println("序号无效");
                 break;
         }
     }
@@ -64,8 +64,8 @@ public class StudentSubmitController {
                 "1. 论文\n" +
                 "2. 奖励\n" +
                 "3. 标准\n" +
-                "4. 其他成果\n");
-        System.out.println("输入选项前的序号选择要提交的成果类型: \n");
+                "4. 其他成果");
+        System.out.println("输入选项前的序号选择要提交的成果类型: ");
         Scanner sc = new Scanner(System.in);
         // 假设输入就是合法的，如果要不合法输入的情况之后再添
         int choice = sc.nextInt();
@@ -83,7 +83,7 @@ public class StudentSubmitController {
                 submitOther(st_id);
                 break;
             default:
-                System.out.println("序号无效\n");
+                System.out.println("序号无效");
                 break;
         }
     }
@@ -103,7 +103,7 @@ public class StudentSubmitController {
                 "6. 专利\n" +
                 "7. 软硬件平台开发\n" +
                 "8. 教材\n" +
-                "9. 其他\n");
+                "9. 其他");
         Scanner sc = new Scanner(System.in);
         Integer choice = sc.nextInt();
         String prefix = null;
@@ -144,42 +144,47 @@ public class StudentSubmitController {
     public void selectVerify(VerifySearchCriteria criteria) {
         List<Verify> verifies = new ArrayList<>();
 
-        System.out.println("未审核成果: \n");
+        System.out.println("未审核成果: ");
         criteria.setFirst_verify(0);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("未终审成果: \n");
+        System.out.println("未终审成果: ");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("审核通过成果: \n");
+        System.out.println("审核通过成果: ");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(1);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("初审未通过成果:\n");
+        System.out.println("初审未通过成果:");
         criteria.setFirst_verify(-1);
         criteria.setLast_verify(0);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
 
-        System.out.println("终审未通过成果: \n");
+        System.out.println("终审未通过成果: ");
         criteria.setFirst_verify(1);
         criteria.setLast_verify(-1);
         verifies = DAOFactory.getInstance().getVerifyDAO().selectByCriteria(criteria);
-        System.out.println(verifies);
+        for (Verify verify: verifies)
+            System.out.println(verify);
     }
 
     /**
      * 论文成果提交
      */
     public void submitThesis(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Thesis thesis = new Thesis();
             Verify verify = new Verify();
@@ -193,20 +198,21 @@ public class StudentSubmitController {
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
             thesis.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
 
-            System.out.println("请输入论文名称:\n");
+            System.out.println("请输入论文名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             thesis.setTh_name(name);
 
-            System.out.println("请输入论文发表刊物名称:\n");
+            System.out.println("请输入论文发表刊物名称:");
             sc = new Scanner(System.in);
             String publi = sc.next();
             thesis.setTh_public(publi);
 
             System.out.println("请输入序号选择论文状态:\n" +
                     "1. 录用未发表\n" +
-                    "2. 已发表\n");
+                    "2. 已发表");
             sc = new Scanner(System.in);
             Integer status = sc.nextInt();
             switch(status) {
@@ -221,19 +227,19 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入论文发表时间(例如2023-01-01):\n");
+            System.out.println("请输入论文发表时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             thesis.setTh_time(time);
 
-            System.out.println("请输入论文索引类型:\n");
+            System.out.println("请输入论文索引类型:");
             sc = new Scanner(System.in);
             String index = sc.next();
             thesis.setTh_index(index);
 
             System.out.println("请输入序号选择论文归属库情况:\n" +
                     "1. 学院高质量论文库\n" +
-                    "2. 学院核心论文库\n");
+                    "2. 学院核心论文库");
             sc = new Scanner(System.in);
             Integer lib = sc.nextInt();
             switch(lib) {
@@ -248,7 +254,7 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入论文扫描或PDF材料本地存储路径:\n");
+            System.out.println("请输入论文扫描或PDF材料本地存储路径:");
             sc = new Scanner(System.in);
             String evid = sc.next();
             thesis.setTh_evid(evid);
@@ -272,7 +278,7 @@ public class StudentSubmitController {
      * 奖励成果提交
      */
     public void submitAward(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Award award= new Award();
             Verify verify = new Verify();
@@ -286,8 +292,9 @@ public class StudentSubmitController {
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
             award.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
 
-            System.out.println("请输入奖励名称:\n");
+            System.out.println("请输入奖励名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             award.setAw_name(name);
@@ -296,7 +303,7 @@ public class StudentSubmitController {
                     "1. 国家级\n" +
                     "2. 省部级\n" +
                     "3. 市级\n" +
-                    "4. 其他\n");
+                    "4. 其他");
             sc = new Scanner(System.in);
             Integer level = sc.nextInt();
             switch(level) {
@@ -321,7 +328,7 @@ public class StudentSubmitController {
                     "1. 特等奖\n" +
                     "2. 一等奖\n" +
                     "3. 二等奖\n" +
-                    "4. 三等奖\n");
+                    "4. 三等奖");
             sc = new Scanner(System.in);
             Integer grade = sc.nextInt();
             switch(grade) {
@@ -342,17 +349,17 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入奖励排名(1,2,...):\n");
+            System.out.println("请输入奖励排名(1,2,...):");
             sc = new Scanner(System.in);
             Integer rank = sc.nextInt();
             award.setAw_rank(rank);
 
-            System.out.println("请输入获得奖励时间(例如2023-01-01):\n");
+            System.out.println("请输入获得奖励时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             award.setAw_time(time);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             award.setAw_evid(evid);
@@ -376,7 +383,7 @@ public class StudentSubmitController {
      * 标准成果提交
      */
     public void submitStandard(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Standard achiev= new Standard();
             Verify verify = new Verify();
@@ -390,8 +397,9 @@ public class StudentSubmitController {
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
             achiev.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
 
-            System.out.println("请输入标准名称:\n");
+            System.out.println("请输入标准名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setSt_name(name);
@@ -400,7 +408,7 @@ public class StudentSubmitController {
                     "1. 国家标准\n" +
                     "2. 省部级地方标准\n" +
                     "3. 行业标准\n" +
-                    "4. 团队标准\n");
+                    "4. 团队标准");
             sc = new Scanner(System.in);
             Integer level = sc.nextInt();
             switch(level) {
@@ -421,12 +429,12 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入标准发布时间(例如2023-01-01):\n");
+            System.out.println("请输入标准发布时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setSt_time(time);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setSt_evid(evid);
@@ -450,7 +458,7 @@ public class StudentSubmitController {
      * 标准成果提交
      */
     public void submitReport(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Report achiev= new Report();
             Verify verify = new Verify();
@@ -463,9 +471,10 @@ public class StudentSubmitController {
             Integer num = DAOFactory.getInstance().getVerifyDAO().selectByAchiev(prefix).size();
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
             achiev.setAchiev_no(achiev_no);
 
-            System.out.println("请输入报告名称:\n");
+            System.out.println("请输入报告名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setRe_name(name);
@@ -474,7 +483,7 @@ public class StudentSubmitController {
                     "1. 规划类\n" +
                     "2. 设计类\n" +
                     "3. 服务类\n" +
-                    "4. 其他\n");
+                    "4. 其他");
             sc = new Scanner(System.in);
             Integer level = sc.nextInt();
             switch(level) {
@@ -495,22 +504,22 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入报告服务单位:\n");
+            System.out.println("请输入报告服务单位:");
             sc = new Scanner(System.in);
             String unit = sc.next();
             achiev.setRe_unit(unit);
 
-            System.out.println("请输入报告时间(例如2023-01-01):\n");
+            System.out.println("请输入报告时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setRe_time(time);
 
-            System.out.println("请输入报告贡献度排名（整数）:\n");
+            System.out.println("请输入报告贡献度排名（整数）:");
             sc = new Scanner(System.in);
             Integer contri = sc.nextInt();
             achiev.setRe_contri(contri);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setRe_evid(evid);
@@ -534,7 +543,7 @@ public class StudentSubmitController {
      * 专利成果提交
      */
     public void submitPatent(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Patent achiev= new Patent();
             Verify verify = new Verify();
@@ -547,16 +556,17 @@ public class StudentSubmitController {
             Integer num = DAOFactory.getInstance().getVerifyDAO().selectByAchiev(prefix).size();
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
             achiev.setAchiev_no(achiev_no);
 
-            System.out.println("请输入专利名称:\n");
+            System.out.println("请输入专利名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setPa_name(name);
 
             System.out.println("请输入序号选择专利类型:\n" +
                     "1. 发明专利\n" +
-                    "2. 实用新型专利\n");
+                    "2. 实用新型专利");
             sc = new Scanner(System.in);
             Integer type = sc.nextInt();
             switch(type) {
@@ -571,27 +581,27 @@ public class StudentSubmitController {
                     break;
             }
 
-            System.out.println("请输入专利号:\n");
+            System.out.println("请输入专利号:");
             sc = new Scanner(System.in);
             String no = sc.next();
             achiev.setPa_no(no);
 
-            System.out.println("请输入专利发布时间(例如2023-01-01):\n");
+            System.out.println("请输入专利发布时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setPa_time(time);
 
-            System.out.println("请输入专利状态:\n");
+            System.out.println("请输入专利状态:");
             sc = new Scanner(System.in);
             String status = sc.next();
             achiev.setPa_status(status);
 
-            System.out.println("请输入专利贡献度排名（整数）:\n");
+            System.out.println("请输入专利贡献度排名（整数）:");
             sc = new Scanner(System.in);
             Integer contri = sc.nextInt();
             achiev.setPa_contri(contri);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setPa_evid(evid);
@@ -615,7 +625,7 @@ public class StudentSubmitController {
      * 软硬件开发平台成果
      */
     public void submitDevelopment(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Development achiev= new Development();
             Verify verify = new Verify();
@@ -628,29 +638,30 @@ public class StudentSubmitController {
             Integer num = DAOFactory.getInstance().getVerifyDAO().selectByAchiev(prefix).size();
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
             achiev.setAchiev_no(achiev_no);
 
-            System.out.println("请输入平台名称:\n");
+            System.out.println("请输入平台名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setDe_name(name);
 
-            System.out.println("请输入平台服务单位:\n");
+            System.out.println("请输入平台服务单位:");
             sc = new Scanner(System.in);
             String no = sc.next();
             achiev.setDe_unit(no);
 
-            System.out.println("请输入平台上线时间(例如2023-01-01):\n");
+            System.out.println("请输入平台上线时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setDe_time(time);
 
-            System.out.println("请输入专利贡献度排名（整数）:\n");
+            System.out.println("请输入专利贡献度排名（整数）:");
             sc = new Scanner(System.in);
             Integer contri = sc.nextInt();
             achiev.setDe_contri(contri);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setDe_evid(evid);
@@ -674,7 +685,7 @@ public class StudentSubmitController {
      * 教材
      */
     public void submitTextbook(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Textbook achiev= new Textbook();
             Verify verify = new Verify();
@@ -687,29 +698,30 @@ public class StudentSubmitController {
             Integer num = DAOFactory.getInstance().getVerifyDAO().selectByAchiev(prefix).size();
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
             achiev.setAchiev_no(achiev_no);
 
-            System.out.println("请输入教材名称:\n");
+            System.out.println("请输入教材名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setTe_name(name);
 
-            System.out.println("请输入教材出版社:\n");
+            System.out.println("请输入教材出版社:");
             sc = new Scanner(System.in);
             String no = sc.next();
             achiev.setTe_press(no);
 
-            System.out.println("请输入教材出版时间(例如2023-01-01):\n");
+            System.out.println("请输入教材出版时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setTe_presstime(time);
 
-            System.out.println("请输入教材贡献度（整数）:\n");
+            System.out.println("请输入教材贡献度（整数）:");
             sc = new Scanner(System.in);
             Integer contri = sc.nextInt();
             achiev.setTe_contri(contri);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setTe_evid(evid);
@@ -733,7 +745,7 @@ public class StudentSubmitController {
      * 其他成果
      */
     public void submitOther(String st_id) {
-        System.out.println("*注意以下提示填写的均为必填项*\n");
+        System.out.println("*注意以下提示填写的均为必填项*");
         synchronized (this) {
             Other achiev= new Other();
             Verify verify = new Verify();
@@ -746,24 +758,25 @@ public class StudentSubmitController {
             Integer num = DAOFactory.getInstance().getVerifyDAO().selectByAchiev(prefix).size();
             String achiev_no = prefix + String.format("%06d", num + 1);
             verify.setAchiev_no(achiev_no);
+            verify.setSt_id(st_id);
             achiev.setAchiev_no(achiev_no);
 
-            System.out.println("请输入成果名称:\n");
+            System.out.println("请输入成果名称:");
             Scanner sc = new Scanner(System.in);
             String name = sc.next();
             achiev.setOt_name(name);
 
-            System.out.println("请输入成果描述（50字以内）:\n");
+            System.out.println("请输入成果描述（50字以内）:");
             sc = new Scanner(System.in);
             String desc = sc.next();
             achiev.setOt_desc(desc);
 
-            System.out.println("请输入成果发布时间(例如2023-01-01):\n");
+            System.out.println("请输入成果发布时间(例如2023-01-01):");
             sc = new Scanner(System.in);
             String time = sc.next();
             achiev.setOt_time(time);
 
-            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):\n");
+            System.out.println("请输入佐证材料本地存储路径(.rar,.zip):");
             sc = new Scanner(System.in);
             String evid = sc.next();
             achiev.setOt_evid(evid);

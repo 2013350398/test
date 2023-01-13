@@ -5,190 +5,32 @@
       <artifact name="Sys" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cb11c9ea-9f6f-4f5a-96dd-86feee9790ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/AwardDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/AwardDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/DevelopmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/DevelopmentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/OtherDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/OtherDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/PatentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/PatentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/ReportDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/ReportDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/StandardDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/StandardDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/TextbookDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/TextbookDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/DAO/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/AdminAddStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/AdminAddStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/AdminVerifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/AdminVerifyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/MentorVerifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/MentorVerifyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="2095604564">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="14" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="2" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="14" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="172" />
-          <entry key="properties" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="172" />
-          <entry key="Properties" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="12" />
-          <entry key="java" value="7794" />
-          <entry key="properties" value="5" />
-          <entry key="txt" value="309" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="7793" />
-          <entry key="PLAIN_TEXT" value="321" />
-          <entry key="Properties" value="5" />
-          <entry key="SQL" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="225272474">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="1" />
-          <entry key="java" value="112" />
-          <entry key="properties" value="1" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="112" />
-          <entry key="Properties" value="1" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.vcs.git.usages">
-        <counts>
-          <entry key="git.branch.compare" value="3" />
-          <entry key="git.branch.merge" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="4" />
-          <entry key="java" value="828" />
-          <entry key="txt" value="26" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="828" />
-          <entry key="PLAIN_TEXT" value="30" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/DAO/test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="240" column="67" lean-forward="true" selection-start-line="240" selection-start-column="67" selection-end-line="240" selection-end-column="67" />
-              <folding>
-                <element signature="method#Project_leaderFunc#0;class#graduateandproject#0" />
-                <element signature="method#ChargeFunc#0;class#graduateandproject#0" />
-                <element signature="method#login#0;class#graduateandproject#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
-              <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="185" column="35" selection-start-line="185" selection-start-column="35" selection-end-line="185" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/achiev_submit/MentorVerifyController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#selectAll#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectByAchiev#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectBySNo#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectByFirstStatus#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectByLastStatus#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectByMeId#0;class#VerifyDAOImpl#0" />
-                <element signature="method#selectByCriteria#0;class#VerifyDAOImpl#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/DAO/achieveSys.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="119" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -298,6 +140,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -310,6 +155,7 @@
     <option name="width" value="1649" />
     <option name="height" value="1350" />
   </component>
+  <component name="ProjectId" id="2KHZGSSmcSVNHVBPIwo7A6hs9vr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -368,34 +214,26 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1673626205072" />
-    <property name="last_opened_file_path" value="D:/tomcat/apache-tomcat-9.0.24/lib/jxl-2.6.12.1.jar!/" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.4015748" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "D:/Java/jar包/jxl-2.6.12.1.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\databasekeshe\src" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.test">
     <configuration name="assistSys" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -431,11 +269,11 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_databasekeshe" />
       </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="14103" />
       </RunnerSettings>
@@ -489,9 +327,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Tomcat Server.tomcat" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.assistSys" />
+      <item itemvalue="Tomcat Server.tomcat" />
     </list>
     <recent_temporary>
       <list>
@@ -500,6 +338,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -680,36 +519,18 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="连接池代码、项目层次简单pojo和test（数据库叫keshe，在database.properties里面有）" />
