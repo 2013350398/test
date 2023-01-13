@@ -9,23 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb11c9ea-9f6f-4f5a-96dd-86feee9790ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="cb11c9ea-9f6f-4f5a-96dd-86feee9790ac" name="Default Changelist" comment="成果认定子系统修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/AwardDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/AwardDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/DevelopmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/DevelopmentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/OtherDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/OtherDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/PatentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/PatentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/ReportDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/ReportDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/StandardDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/StandardDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/TextbookDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/TextbookDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/ThesisDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/Impl/VerifyDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DAO/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DAO/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/AdminAddStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/AdminAddStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/AdminVerifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/AdminVerifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/MentorVerifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/MentorVerifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/achiev_submit/StudentSubmitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Util/LoadEvid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Util/LoadEvid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +206,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "D:/Java/jar包/jxl-2.6.12.1.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -443,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673626157015</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="成果认定子系统修改">
+      <created>1673637173997</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673637173997</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -541,7 +535,8 @@
     <MESSAGE value="修改业务逻辑实现的调用测试类并补充鲁棒性细节" />
     <MESSAGE value="merge子系统" />
     <MESSAGE value="调试了助教子系统和学术交流子系统" />
-    <option name="LAST_COMMIT_MESSAGE" value="调试了助教子系统和学术交流子系统" />
+    <MESSAGE value="成果认定子系统修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="成果认定子系统修改" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/pojo/Other.java">
