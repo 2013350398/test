@@ -183,6 +183,11 @@ public class ApplyController {
                 n=courses.size();
             else
                 n=students.size();
+            System.out.println("共有"+students.size()+"位同学未选到助教课程");
+            System.out.println("学号\t姓名");
+            for (Student student:students){
+                System.out.println(student.getSt_id()+'\t'+student.getSt_name());
+            }
             for(int i=0;i<n;i++){
                 Student student=students.get(i);
                 student.setIs_assistance(1);

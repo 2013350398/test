@@ -1,0 +1,535 @@
+Index: databasekeshe.iml
+===================================================================
+diff --git a/databasekeshe.iml b/databasekeshe.iml
+deleted file mode 100644
+--- a/databasekeshe.iml	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
++++ /dev/null	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
+@@ -1,2 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4" />
+\ No newline at end of file
+Index: src/main/DAO/CourseDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/DAO/CourseDao.java b/src/main/DAO/CourseDao.java
+new file mode 100644
+--- /dev/null	(date 1672329230833)
++++ b/src/main/DAO/CourseDao.java	(date 1672329230833)
+@@ -0,0 +1,13 @@
++package main.DAO;
++
++import main.pojo.Course;
++
++import java.util.List;
++
++public interface CourseDao {
++    void addCourse(Course course);
++    void updateCourse(Course course);
++    void deleteCourse(String co_id);
++    void getCourse(String co_id);
++    List<Course> COURSE_LIST(Course course);
++}
+Index: src/main/pojo/Application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/pojo/Application.java b/src/main/pojo/Application.java
+new file mode 100644
+--- /dev/null	(date 1671553500624)
++++ b/src/main/pojo/Application.java	(date 1671553500624)
+@@ -0,0 +1,60 @@
++package main.pojo;
++
++public class Application {
++    private String sa_id;
++    private String st_id;
++    private String co_id;
++    private int round;
++    private int selected;
++
++    public String getSa_id() {
++        return sa_id;
++    }
++
++    public void setSa_id(String sa_id) {
++        this.sa_id = sa_id;
++    }
++
++    public String getSt_id() {
++        return st_id;
++    }
++
++    public void setSt_id(String st_id) {
++        this.st_id = st_id;
++    }
++
++    public String getCo_id() {
++        return co_id;
++    }
++
++    public void setCo_id(String co_id) {
++        this.co_id = co_id;
++    }
++
++    public int getRound() {
++        return round;
++    }
++
++    public void setRound(int round) {
++        this.round = round;
++    }
++
++    public int getSelected() {
++        return selected;
++    }
++
++    public void setSelected(int selected) {
++        this.selected = selected;
++    }
++
++    @Override
++    public String toString() {
++        return "Application{" +
++                "sa_id='" + sa_id + '\'' +
++                ", st_id='" + st_id + '\'' +
++                ", co_id='" + co_id + '\'' +
++                ", round=" + round +
++                ", selected=" + selected +
++                '}';
++    }
++}
+Index: src/main/DAO/Impl/CourseDaoImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/DAO/Impl/CourseDaoImpl.java b/src/main/DAO/Impl/CourseDaoImpl.java
+new file mode 100644
+--- /dev/null	(date 1672329695082)
++++ b/src/main/DAO/Impl/CourseDaoImpl.java	(date 1672329695082)
+@@ -0,0 +1,33 @@
++package main.DAO.Impl;
++
++import main.DAO.CourseDao;
++import main.pojo.Course;
++
++import java.util.List;
++
++public class CourseDaoImpl implements CourseDao {
++    @Override
++    public void addCourse(Course course) {
++
++    }
++
++    @Override
++    public void updateCourse(Course course) {
++
++    }
++
++    @Override
++    public void deleteCourse(String co_id) {
++
++    }
++
++    @Override
++    public void getCourse(String co_id) {
++
++    }
++
++    @Override
++    public List<Course> COURSE_LIST(Course course) {
++        return null;
++    }
++}
+Index: .idea/libraries/druid_1_2_9.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/druid_1_2_9.xml b/.idea/libraries/druid_1_2_9.xml
+new file mode 100644
+--- /dev/null	(date 1670934029499)
++++ b/.idea/libraries/druid_1_2_9.xml	(date 1670934029499)
+@@ -0,0 +1,9 @@
++<component name="libraryTable">
++  <library name="druid-1.2.9">
++    <CLASSES>
++      <root url="jar://$PROJECT_DIR$/lib/druid-1.2.9.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: src/main/Util/ConnectionManagement.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.Util;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\n//不用\r\npublic class ConnectionManagement {\r\n    public static Connection getConnection() {\r\n        Connection conn = null;\r\n        try {\r\n            String url = \"jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false\";\r\n            Class.forName(\"com.microsoft.sqlserver.jdbc.SQLServerDriver\");\r\n            conn = DriverManager.getConnection(url);\r\n        } catch (ClassNotFoundException e) {\r\n            System.out.println(\"无法找到驱动类\");\r\n        }\r\n        catch(SQLException sqlE) {\r\n            System.out.println(\"sqlerror\");\r\n            sqlE.printStackTrace();\r\n        }\r\n\r\n        return conn;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Util/ConnectionManagement.java b/src/main/Util/ConnectionManagement.java
+--- a/src/main/Util/ConnectionManagement.java	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
++++ b/src/main/Util/ConnectionManagement.java	(date 1670934029347)
+@@ -8,7 +8,7 @@
+     public static Connection getConnection() {
+         Connection conn = null;
+         try {
+-            String url = "jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false";
++            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=keshe;user=sa;password=12345";
+             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+             conn = DriverManager.getConnection(url);
+         } catch (ClassNotFoundException e) {
+Index: src/database.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>url=jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false\r\n#¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ\r\n#Unsupported major.minor version 52.0£ºÈ«»»³Éjdk18\r\n#PKIX path building failed£º¼ÓÉÏencrypt=false\r\n#ssl²»ÐÅÈÎ£ºTrust Server Certificate=True£¬¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ\r\n#druid°æ±¾\r\n#win10¿ØÖÆÌ¨µÄ±àÂëÄ¬ÈÏÊÇGBK£¬¶ø jvm µÄÊä³öÊÇUTF-8£ºÔËÐÐÉèÖÃVM£º-Dfile.encoding=GBK  &  all¸Ä³Éutf-8\r\nusername=sa\r\npassword=20021001\r\ndriverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver\r\ninitialSize=10\r\nmaxActive=10\r\nmaxWait=2000
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/database.properties b/src/database.properties
+--- a/src/database.properties	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
++++ b/src/database.properties	(date 1670934029376)
+@@ -1,12 +1,6 @@
+-url=jdbc:sqlserver://192.168.177.1:1433;DatabaseName=keshe;user=sa;password=20021001;Trust Server Certificate=True;encrypt=false
+-#¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ
+-#Unsupported major.minor version 52.0£ºÈ«»»³Éjdk18
+-#PKIX path building failed£º¼ÓÉÏencrypt=false
+-#ssl²»ÐÅÈÎ£ºTrust Server Certificate=True£¬¹Ø¼ü×ÖÖ®¼ä±ØÐëÒªÓÐ¿Õ¸ñ
+-#druid°æ±¾
+-#win10¿ØÖÆÌ¨µÄ±àÂëÄ¬ÈÏÊÇGBK£¬¶ø jvm µÄÊä³öÊÇUTF-8£ºÔËÐÐÉèÖÃVM£º-Dfile.encoding=GBK  &  all¸Ä³Éutf-8
++url=jdbc:sqlserver://localhost:1433;DatabaseName=keshe;user=sa;password=12345;Trust Server Certificate=True;encrypt=false
+ username=sa
+-password=20021001
++password=12345
+ driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+ initialSize=10
+ maxActive=10
+Index: src/main/Util/DruidUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main.Util;\r\n\r\nimport com.alibaba.druid.pool.DruidDataSourceFactory;\r\n\r\nimport javax.sql.DataSource;\r\nimport java.io.InputStream;\r\nimport java.util.Properties;\r\n\r\npublic class DruidUtil {\r\n    //声明dataSource\r\n    private static DataSource dataSource;\r\n    //通过静态代码块\r\n    static {\r\n        try {\r\n            //1. 创建Properties对象\r\n            Properties properties = new Properties();\r\n            //2. 将配置文件转换成字节输入流\r\n            InputStream is = DruidUtil.class.getClassLoader().getResourceAsStream(\"./database.properties\");\r\n            //3. 使用properties对象加载is\r\n            properties.load(is);\r\n            //druid底层是使用的工厂设计模式，去加载配置文件，创建DruidDataSource对象\r\n            dataSource = DruidDataSourceFactory.createDataSource(properties);\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    public static DataSource getDataSource(){\r\n        return dataSource;//返回dataSource\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Util/DruidUtil.java b/src/main/Util/DruidUtil.java
+--- a/src/main/Util/DruidUtil.java	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
++++ b/src/main/Util/DruidUtil.java	(date 1670934029430)
+@@ -1,6 +1,7 @@
+ package main.Util;
+ 
+ import com.alibaba.druid.pool.DruidDataSourceFactory;
++import com.sun.xml.internal.ws.encoding.xml.XMLMessage;
+ 
+ import javax.sql.DataSource;
+ import java.io.InputStream;
+@@ -9,6 +10,7 @@
+ public class DruidUtil {
+     //声明dataSource
+     private static DataSource dataSource;
++
+     //通过静态代码块
+     static {
+         try {
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1670934029408)
++++ b/.idea/jarRepositories.xml	(date 1670934029408)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision 384f7ab2ae89cfb2d2aadc13ce6f99fedd0fcacc)
++++ b/.idea/encodings.xml	(date 1670934029481)
+@@ -2,5 +2,7 @@
+ <project version="4">
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/libraries/sqljdbc4.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/sqljdbc4.xml b/.idea/libraries/sqljdbc4.xml
+new file mode 100644
+--- /dev/null	(date 1670934029448)
++++ b/.idea/libraries/sqljdbc4.xml	(date 1670934029448)
+@@ -0,0 +1,9 @@
++<component name="libraryTable">
++  <library name="sqljdbc4">
++    <CLASSES>
++      <root url="jar://$PROJECT_DIR$/lib/sqljdbc4.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: src/main/pojo/Evaluate.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/pojo/Evaluate.java b/src/main/pojo/Evaluate.java
+new file mode 100644
+--- /dev/null	(date 1671553391151)
++++ b/src/main/pojo/Evaluate.java	(date 1671553391151)
+@@ -0,0 +1,92 @@
++package main.pojo;
++
++import java.util.Date;
++
++public class Evaluate {
++    private String ev_id;
++    private String st_id;
++    private String co_id;
++    private String self_eva;
++    private Date sub_time;
++    private String te_eva;
++    private String te_idea;
++    private Date te_time;
++
++    public String getEv_id() {
++        return ev_id;
++    }
++
++    public void setEv_id(String ev_id) {
++        this.ev_id = ev_id;
++    }
++
++    public String getSt_id() {
++        return st_id;
++    }
++
++    public void setSt_id(String st_id) {
++        this.st_id = st_id;
++    }
++
++    public String getCo_id() {
++        return co_id;
++    }
++
++    public void setCo_id(String co_id) {
++        this.co_id = co_id;
++    }
++
++    public String getSelf_eva() {
++        return self_eva;
++    }
++
++    public void setSelf_eva(String self_eva) {
++        this.self_eva = self_eva;
++    }
++
++    public Date getSub_time() {
++        return sub_time;
++    }
++
++    public void setSub_time(Date sub_time) {
++        this.sub_time = sub_time;
++    }
++
++    public String getTe_eva() {
++        return te_eva;
++    }
++
++    public void setTe_eva(String te_eva) {
++        this.te_eva = te_eva;
++    }
++
++    public String getTe_idea() {
++        return te_idea;
++    }
++
++    public void setTe_idea(String te_idea) {
++        this.te_idea = te_idea;
++    }
++
++    public Date getTe_time() {
++        return te_time;
++    }
++
++    public void setTe_time(Date te_time) {
++        this.te_time = te_time;
++    }
++
++    @Override
++    public String toString() {
++        return "Evaluate{" +
++                "ev_id='" + ev_id + '\'' +
++                ", st_id='" + st_id + '\'' +
++                ", co_id='" + co_id + '\'' +
++                ", self_eva='" + self_eva + '\'' +
++                ", sub_time=" + sub_time +
++                ", te_eva='" + te_eva + '\'' +
++                ", te_idea='" + te_idea + '\'' +
++                ", te_time=" + te_time +
++                '}';
++    }
++}
+Index: src/main/pojo/Course.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/pojo/Course.java b/src/main/pojo/Course.java
+new file mode 100644
+--- /dev/null	(date 1671553163604)
++++ b/src/main/pojo/Course.java	(date 1671553163604)
+@@ -0,0 +1,112 @@
++package main.pojo;
++
++import java.util.Date;
++
++public class Course {
++    private String co_id;
++    private String ct_id;
++    private String co_name;
++    private String co_nature;
++    private int co_asnum;
++    private Date co_time;
++    private String co_object;
++    private int co_hours;
++    private int co_num;
++    private int co_credit;
++
++    public String getCo_id() {
++        return co_id;
++    }
++
++    public void setCo_id(String co_id) {
++        this.co_id = co_id;
++    }
++
++    public String getCt_id() {
++        return ct_id;
++    }
++
++    public void setCt_id(String ct_id) {
++        this.ct_id = ct_id;
++    }
++
++    public String getCo_name() {
++        return co_name;
++    }
++
++    public void setCo_name(String co_name) {
++        this.co_name = co_name;
++    }
++
++    public String getCo_nature() {
++        return co_nature;
++    }
++
++    public void setCo_nature(String co_nature) {
++        this.co_nature = co_nature;
++    }
++
++    public int getCo_asnum() {
++        return co_asnum;
++    }
++
++    public void setCo_asnum(int co_asnum) {
++        this.co_asnum = co_asnum;
++    }
++
++    public Date getCo_time() {
++        return co_time;
++    }
++
++    public void setCo_time(Date co_time) {
++        this.co_time = co_time;
++    }
++
++    public String getCo_object() {
++        return co_object;
++    }
++
++    public void setCo_object(String co_object) {
++        this.co_object = co_object;
++    }
++
++    public int getCo_hours() {
++        return co_hours;
++    }
++
++    public void setCo_hours(int co_hours) {
++        this.co_hours = co_hours;
++    }
++
++    public int getCo_num() {
++        return co_num;
++    }
++
++    public void setCo_num(int co_num) {
++        this.co_num = co_num;
++    }
++
++    public int getCo_credit() {
++        return co_credit;
++    }
++
++    public void setCo_credit(int co_credit) {
++        this.co_credit = co_credit;
++    }
++
++    @Override
++    public String toString() {
++        return "Course{" +
++                "co_id='" + co_id + '\'' +
++                ", ct_id='" + ct_id + '\'' +
++                ", co_name='" + co_name + '\'' +
++                ", co_nature='" + co_nature + '\'' +
++                ", co_asnum=" + co_asnum +
++                ", co_time=" + co_time +
++                ", co_object='" + co_object + '\'' +
++                ", co_hours=" + co_hours +
++                ", co_num=" + co_num +
++                ", co_credit=" + co_credit +
++                '}';
++    }
++}
