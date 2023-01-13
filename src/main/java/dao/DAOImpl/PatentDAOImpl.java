@@ -17,7 +17,7 @@ public class PatentDAOImpl implements PatentDAO {
 
     private static final String selectByNoSQL = "SELECT * FROM patent WHERE achiev_no LIKE ?;";
     private static final String selectByNoMentorSQL = "SELECT * FROM patent WHERE achiev_no LIKE ? AND " +
-            "achiev_no IN (SELECT achiev_no FROM verify, me_st WHERE verify.st_id = me_st.st_id AND me_id = ?);";
+            "achiev_no IN (SELECT achiev_no FROM verify, me_st WHERE verify.st_id = me_st.st_id AND me_st.me_id = ?);";
     private static final String insertSQL = "INSERT INTO patent VALUES(?,?,?,?,?,?,?,?);";
 
     @Override
