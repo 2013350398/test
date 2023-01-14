@@ -224,4 +224,30 @@ public class StudentDaoImpl implements StudentDao {
         }
         return st;
     }
+
+    //add mentor-student
+    @Override
+    public void insertStUser(String st_id, String pwd,String su_id) {
+        String sql = "INSERT INTO student(st_id,st_pwd,su_id) VALUES(?,?,?) ";
+        Connection con = null;
+        try{
+            DruidUtil druidUtil=null;
+            DataSource dataSource=druidUtil.getDataSource();
+            con=dataSource.getConnection();//获取连接池;
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setString(1, st_id);
+            psmt.setString(2, pwd);
+            psmt.setString(3, su_id);
+            psmt.executeUpdate();
+            psmt.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            try{
+                con.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 }

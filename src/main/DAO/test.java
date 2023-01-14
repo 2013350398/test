@@ -27,7 +27,7 @@ public class test {
     private static StudentSubmitController ssc = new StudentSubmitController();
     public static void AdminFunc(Admin temp){
         while(true){
-            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.助教分配\n7.退出");
+            System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.助教分配\n7.关联导师和学生\n8.退出");
             cnt=sc.nextInt();
             sc.nextLine();
             int t;
@@ -77,7 +77,6 @@ public class test {
                     //成果认定
                     System.out.println("请选择: \n" + "1. 查看成果审核信息\n" + "2. 查看提交成果详细信息\n" + "3. 修改成果终审状态\n");
                     Integer choice = sc.nextInt();
-
                     switch (choice) {
                         case 1:
                             avc.select(temp.getAd_id());
@@ -115,10 +114,23 @@ public class test {
                     break;
                 case 6:
                     ac.Allocation();
-                case 7:
+                case 7://excel导入新生-导师
+                    System.out.println("请选择：\n1.建立已有的导师和学生的联系\n2.excel导入新生导师联系表生成新生账号");
+                    choice=sc.nextInt();
+                    sc.nextLine();
+                    switch (choice){
+                        case 1:
+                            aad.addMe_St();
+                            break;
+                        case 2:
+                            aad.addMe_StByExcel();
+                            break;
+                    }
+                    break;
+                case 8:
                     break;
             }
-            if(cnt==6){break;}
+            if(cnt==8){break;}
         }
 
 

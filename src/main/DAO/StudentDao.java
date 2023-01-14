@@ -11,4 +11,5 @@ public interface StudentDao {
     Student getStudent(String st_id);
     List<Student> findStudents(Student student);
     List<Student> ISNOTAssistance();
+    void insertStUser(String st_id,String pwd,String su_id);
 }
