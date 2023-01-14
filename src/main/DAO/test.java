@@ -213,8 +213,6 @@ public class test {
                 break;
             }
         }
-
-
     }
     public static void StudentFunc(Student temp){
         while(true){
