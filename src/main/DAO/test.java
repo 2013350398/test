@@ -1,5 +1,6 @@
 package main.DAO;
-
+//C:\Users\20133\Desktop\achieve.zip
+//TH202301151951000001
 import main.ApplyAssistance.ApplyController;
 import main.DAO.Impl.*;
 import main.achiev_submit.AdminAddStudent;
@@ -25,7 +26,8 @@ public class test {
     private static AdminVerifyController avc = new AdminVerifyController();
     private static MentorVerifyController mvc = new MentorVerifyController();
     private static StudentSubmitController ssc = new StudentSubmitController();
-    public static void AdminFunc(Admin temp){
+
+    private static void AdminFunc(Admin temp){
         while(true){
             System.out.println("请选择功能：\n1.研究生毕业审核\n2.研究生项目认定审核\n3.研究生成果认定审核\n4.研究生学术交流审核\n5.学生录入\n6.助教分配\n7.关联导师和学生\n8.退出");
             cnt=sc.nextInt();
@@ -135,7 +137,7 @@ public class test {
 
 
     }
-    public static void MentorFunc(Mentor temp){
+    private static void MentorFunc(Mentor temp){
         while(true){
             System.out.println("请选择功能：\n1.研究生项目认定审核\n2.研究生成果认定审核\n3.研究生学术交流审核\n4.退出");
             int t;
@@ -214,7 +216,7 @@ public class test {
             }
         }
     }
-    public static void StudentFunc(Student temp){
+    private static void StudentFunc(Student temp){
         while(true){
             System.out.println("请选择功能：\n1.研究生项目认定申请\n2.研究生成果认定申请\n3.研究生学术交流申请\n4.助教申请\n5.填写助教评定表\n6.退出");
             int t;
@@ -300,7 +302,7 @@ public class test {
         //成果审核
         //学术交流认证
     }
-    public static void Project_leaderFunc(Project_leader temp){
+    private static void Project_leaderFunc(Project_leader temp){
         while(true){
             System.out.println("请选择功能：\n1.新建项目\n2.查询自己管理的各个项目信息\n3.查询自己管理的各个项目信息的相关学生认证表信息\n4.修改项目认证表签字状态\n5.退出");
             cnt=sc.nextInt();
@@ -335,7 +337,7 @@ public class test {
     }
 
 
-    public static void ChargeFunc(charge temp){
+    private static void ChargeFunc(charge temp){
         while(true){
             System.out.println("1.显示学生学术交流情况表\n2.审核签字\n3.查看某位学生学术交流次数\n4.退出");
             String s1=sc.next();
@@ -360,7 +362,7 @@ public class test {
         }
     }
 
-    public static void TeacherFunc(Teacher temp){
+    private static void TeacherFunc(Teacher temp){
         while (true){
             System.out.println("1.选择助教\n2.填写助教评定表\n3.分配助教\n4.退出");
             System.out.println("请输入您要进行的操作:");
@@ -382,7 +384,7 @@ public class test {
                 break;
         }
     }
-    public static void login(){
+    private static void login(){
         System.out.println("请选择登录身份：\n1.研究生管理员\n2.导师\n3.学生\n4.项目负责人\n5.学科负责人\n6.教师\n");
         cnt=sc.nextInt();
         sc.nextLine();
